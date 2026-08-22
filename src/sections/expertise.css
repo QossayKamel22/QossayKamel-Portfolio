@@ -1,0 +1,33 @@
+.expertise {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.expertise__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 800px) {
+  .expertise__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.expertise__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.expertise__label {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.expertise__detail {
+  font-size: 13px;
+  color: var(--text-tertiary);
+}

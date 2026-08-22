@@ -1,0 +1,18 @@
+.about__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 48px;
+}
+
+@media (max-width: 800px) {
+  .about__grid { grid-template-columns: 1fr; }
+}
+
+.about__body p {
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.75;
+  margin: 0 0 22px;
+}
+
+.about__body p:last-child { margin-bottom: 0; }
