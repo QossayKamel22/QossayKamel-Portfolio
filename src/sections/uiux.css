@@ -1,0 +1,35 @@
+.uiux__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .uiux__grid { grid-template-columns: 1fr; }
+}
+
+.uiux__card {
+  padding: 24px;
+  display: block;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.uiux__card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.uiux__card h3 { font-size: 17px; margin-bottom: 10px; }
+
+.uiux__card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.uiux__link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
