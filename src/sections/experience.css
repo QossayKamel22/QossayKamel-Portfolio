@@ -36,6 +36,24 @@
 
 .timeline__content { padding: 24px 28px; }
 
+.timeline__item--highlight .timeline__marker {
+  width: 14px;
+  height: 14px;
+  left: -1px;
+  background: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft), 0 0 18px var(--accent-glow);
+}
+
+.timeline__item--highlight .timeline__content {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  box-shadow: var(--shadow-lift);
+}
+
+.timeline__content:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
 .timeline__head {
   display: flex;
   flex-wrap: wrap;

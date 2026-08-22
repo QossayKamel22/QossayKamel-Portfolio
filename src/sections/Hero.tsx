@@ -1,69 +1,65 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { profile } from "../data/profile";
+import { Avatar } from "../components/Avatar";
 import "./hero.css";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+};
 
 export function Hero() {
   return (
     <section id="top" className="hero">
       <div className="container hero__grid">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <span className="eyebrow">{profile.title}</span>
-          <h1 className="hero__name">{profile.name}</h1>
-          <p className="hero__tagline">{profile.tagline}</p>
-          <p className="hero__supporting">{profile.supporting}</p>
+        <motion.div variants={container} initial="hidden" animate="show">
+          <motion.span variants={item} className="eyebrow">
+            {profile.title}
+          </motion.span>
+          <motion.h1 variants={item} className="hero__name">
+            {profile.name}
+          </motion.h1>
+          <motion.p variants={item} className="hero__tagline">
+            {profile.tagline}
+          </motion.p>
+          <motion.p variants={item} className="hero__supporting">
+            {profile.supporting}
+          </motion.p>
 
-          <div className="hero__ctas">
+          <motion.div variants={item} className="hero__ctas">
             <a href="#work" className="btn btn-primary focus-ring">
-              View Work
+              View Work <span className="btn__arrow">→</span>
             </a>
             <a href="#contact" className="btn btn-secondary focus-ring">
               Get in Touch
             </a>
-          </div>
+          </motion.div>
 
-          <div className="hero__social">
+          <motion.div variants={item} className="hero__social">
             <a href={profile.github} target="_blank" rel="noreferrer" className="focus-ring">
               GitHub ↗
             </a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="focus-ring">
               LinkedIn ↗
             </a>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           className="hero__visual"
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-          aria-hidden="true"
+          transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
         >
-          <div className="hero__frame hero__frame--back">
-            <div className="hero__frame-bar" />
-            <div className="hero__frame-lines">
-              <span style={{ width: "70%" }} />
-              <span style={{ width: "45%" }} />
-              <span style={{ width: "60%" }} />
-            </div>
-          </div>
-          <div className="hero__frame hero__frame--front">
-            <div className="hero__frame-bar" />
-            <div className="hero__frame-blocks">
-              <div className="hero__block hero__block--accent" />
-              <div className="hero__block" />
-              <div className="hero__block" />
-              <div className="hero__block hero__block--accent" />
-            </div>
-            <div className="hero__frame-lines">
-              <span style={{ width: "80%" }} />
-              <span style={{ width: "55%" }} />
-            </div>
-          </div>
-          <div className="hero__glow" />
+          <div className="hero__portrait-glow" aria-hidden="true" />
+          <Avatar size="lg" />
         </motion.div>
       </div>
     </section>

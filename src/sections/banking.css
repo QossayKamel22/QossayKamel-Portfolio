@@ -14,8 +14,28 @@
   .banking__grid { grid-template-columns: 1fr; }
 }
 
-.banking__card, .banking__arabi {
-  padding: 24px;
+.banking__card {
+  padding: 28px;
+}
+
+.banking__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+
+.banking__mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  margin-bottom: 18px;
 }
 
 .banking__name { font-size: 18px; margin-bottom: 8px; }
@@ -24,21 +44,53 @@
   color: var(--text-secondary);
   font-size: 14px;
   line-height: 1.55;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
 }
 
-.banking__platform { margin-bottom: 16px; display: inline-block; }
+.banking__badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.banking__flutter {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  background: var(--accent-soft);
+}
 
 .banking__links {
   display: flex;
-  gap: 10px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
-.banking__arabi { margin-top: 8px; }
+.banking__store-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.2s var(--ease);
+}
+
+.banking__store-link:hover { color: var(--accent); }
+
+.banking__arabi {
+  margin-top: 8px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
+}
 
 .banking__disclaimer {
-  margin-top: 32px;
+  margin-top: 40px;
   padding-top: 24px;
   border-top: 1px solid var(--border);
 }

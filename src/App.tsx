@@ -18,6 +18,10 @@ function App() {
 
   return (
     <>
+      <div className="ambient-bg" aria-hidden="true">
+        <span />
+        <span />
+      </div>
       <Nav theme={theme} onToggleTheme={toggle} />
       <main>
         <Hero />

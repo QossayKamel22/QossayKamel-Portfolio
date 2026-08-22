@@ -3,9 +3,9 @@ import { ProjectCard } from "../components/ProjectCard";
 import "./featured-work.css";
 
 export function FeaturedWork() {
-  const tier1 = projects.filter((p) => p.tier === 1);
-  const tier2 = projects.filter((p) => p.tier === 2);
-  const tier3 = projects.filter((p) => p.tier === 3);
+  const featured = projects.filter((p) => p.featured);
+  const more = projects.filter((p) => !p.featured && p.image);
+  const additional = projects.filter((p) => !p.featured && !p.image);
 
   return (
     <section id="work" className="featured">
@@ -17,27 +17,35 @@ export function FeaturedWork() {
           shown with what's actually verifiable in each public repository.
         </p>
 
-        <div className="featured__tier1">
-          {tier1.map((p, i) => (
-            <div key={p.slug} className={i === 0 ? "featured__span2" : ""}>
-              <ProjectCard project={p} size={i === 0 ? "lg" : "md"} />
+        <div className="featured__grid">
+          {featured.map((p, i) => (
+            <div key={p.slug} className={i < 2 ? "featured__span2" : ""}>
+              <ProjectCard project={p} size={i < 2 ? "lg" : "md"} />
             </div>
           ))}
         </div>
 
-        <h3 className="featured__subheading">More Work</h3>
-        <div className="featured__tier2">
-          {tier2.map((p) => (
-            <ProjectCard key={p.slug} project={p} size="sm" />
-          ))}
-        </div>
+        {more.length > 0 && (
+          <>
+            <h3 className="featured__subheading">More Work</h3>
+            <div className="featured__tier2">
+              {more.map((p) => (
+                <ProjectCard key={p.slug} project={p} size="sm" />
+              ))}
+            </div>
+          </>
+        )}
 
-        <h3 className="featured__subheading">Additional Projects</h3>
-        <div className="featured__tier3">
-          {tier3.map((p) => (
-            <ProjectCard key={p.slug} project={p} size="sm" />
-          ))}
-        </div>
+        {additional.length > 0 && (
+          <>
+            <h3 className="featured__subheading">Additional Projects</h3>
+            <div className="featured__tier3">
+              {additional.map((p) => (
+                <ProjectCard key={p.slug} project={p} size="sm" />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

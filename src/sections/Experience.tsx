@@ -14,7 +14,7 @@ export function Experience() {
           {experience.map((item, i) => (
             <motion.li
               key={item.role + item.org}
-              className="timeline__item"
+              className={`timeline__item ${i < 2 ? "timeline__item--highlight" : ""}`}
               initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-60px" }}

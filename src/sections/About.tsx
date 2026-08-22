@@ -9,6 +9,11 @@ export function About() {
         <div>
           <span className="eyebrow">About</span>
           <h2 className="section-heading">Where engineering meets real banking business</h2>
+          <p className="about__statement">
+            Building software is only part of the job.
+            <br />
+            Understanding the people and businesses using it is the other.
+          </p>
         </div>
         <div className="about__body">
           {profile.about.map((p, i) => (

@@ -66,7 +66,8 @@ No live domain is currently attached to this project — the steps above are for
 ## Content Accuracy
 
 All experience, education, and project content is sourced from the verified CV and from public
-GitHub repository content at [github.com/QossayKamel22](https://github.com/QossayKamel22).
-Where a project's public repository was empty or unverifiable (e.g. MAKAN, ReadSpeed), the site
-says so explicitly rather than inventing details. The POS Agent repository is private; only
-CV/GitHub-README-verified facts about it are shown, with no fabricated public link.
+GitHub repository content at [github.com/QossayKamel22](https://github.com/QossayKamel22), including
+README screenshots used as real project imagery. Where a project's public repository has no
+verifiable content yet (e.g. MAKAN), the site omits a repository link rather than inventing one.
+The POS Agent repository is private; only CV/GitHub-README-verified facts about it are shown, with
+no fabricated public link.

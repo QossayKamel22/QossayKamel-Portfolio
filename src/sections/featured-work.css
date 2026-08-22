@@ -1,12 +1,12 @@
-.featured__tier1 {
+.featured__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-bottom: 56px;
+  margin-bottom: 64px;
 }
 
 @media (max-width: 800px) {
-  .featured__tier1 { grid-template-columns: 1fr; }
+  .featured__grid { grid-template-columns: 1fr; }
 }
 
 .featured__span2 {
@@ -19,7 +19,7 @@
 
 .featured__subheading {
   font-size: 20px;
-  margin: 40px 0 20px;
+  margin: 48px 0 22px;
   color: var(--text-secondary);
 }
 

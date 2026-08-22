@@ -16,3 +16,13 @@
 }
 
 .about__body p:last-child { margin-bottom: 0; }
+
+.about__statement {
+  font-size: clamp(19px, 2.4vw, 24px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  margin: 20px 0 0;
+  color: var(--text);
+  max-width: 360px;
+}

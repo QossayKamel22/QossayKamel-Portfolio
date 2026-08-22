@@ -19,7 +19,7 @@ export function Contact() {
       <div className="container contact__grid">
         <div>
           <span className="eyebrow">Get in Touch</span>
-          <h2 className="section-heading">Let's talk</h2>
+          <h2 className="section-heading">Let's build something useful.</h2>
           <p className="section-lead">
             Open to Flutter, full-stack, and AI agent engineering opportunities. The fastest way
             to reach me is email.

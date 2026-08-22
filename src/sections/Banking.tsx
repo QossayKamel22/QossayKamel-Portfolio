@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { bankingApps, arabiMobile, bankingDisclaimer, confidentialityNote, noSourceNote } from "../data/banking";
 import "./banking.css";
 
@@ -8,43 +9,57 @@ export function Banking() {
         <span className="eyebrow">Production Work</span>
         <h2 className="section-heading">Production Banking Applications</h2>
         <p className="section-lead">
-          Flutter mobile development at PCNC IT Solutions, contributing to live consumer banking
-          apps used by real customers across iOS and Android.
+          Professional Flutter development across production mobile banking applications at PCNC IT Solutions.
         </p>
 
         <div className="banking__grid">
-          {bankingApps.map((bank) => (
-            <div key={bank.name} className="card banking__card">
+          {bankingApps.map((bank, i) => (
+            <motion.div
+              key={bank.name}
+              className="card banking__card"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
+            >
+              <div className="banking__mark" aria-hidden="true">
+                {bank.name.charAt(0)}
+              </div>
               <h3 className="banking__name">{bank.name}</h3>
               <p className="banking__role">{bank.role}</p>
-              <span className="tag banking__platform">{bank.platforms}</span>
+              <div className="banking__badges">
+                <span className="tag banking__platform">{bank.platforms}</span>
+                <span className="tag banking__flutter">Flutter</span>
+              </div>
               {(bank.playStore || bank.appStore) && (
                 <div className="banking__links">
-                  {bank.playStore && (
-                    <a href={bank.playStore} target="_blank" rel="noreferrer" className="btn btn-secondary focus-ring">
-                      Google Play ↗
+                  {bank.appStore && (
+                    <a href={bank.appStore} target="_blank" rel="noreferrer" className="banking__store-link focus-ring">
+                      App Store <span className="btn__arrow">→</span>
                     </a>
                   )}
-                  {bank.appStore && (
-                    <a href={bank.appStore} target="_blank" rel="noreferrer" className="btn btn-secondary focus-ring">
-                      App Store ↗
+                  {bank.playStore && (
+                    <a href={bank.playStore} target="_blank" rel="noreferrer" className="banking__store-link focus-ring">
+                      Google Play <span className="btn__arrow">→</span>
                     </a>
                   )}
                 </div>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
 
         <div className="card banking__arabi">
-          <h3 className="banking__name">{arabiMobile.name}</h3>
-          <p className="banking__role">{arabiMobile.note}</p>
+          <div>
+            <h3 className="banking__name">{arabiMobile.name}</h3>
+            <p className="banking__role">{arabiMobile.note}</p>
+          </div>
           <div className="banking__links">
-            <a href={arabiMobile.playStore} target="_blank" rel="noreferrer" className="btn btn-secondary focus-ring">
-              Google Play ↗
+            <a href={arabiMobile.appStore} target="_blank" rel="noreferrer" className="banking__store-link focus-ring">
+              App Store <span className="btn__arrow">→</span>
             </a>
-            <a href={arabiMobile.appStore} target="_blank" rel="noreferrer" className="btn btn-secondary focus-ring">
-              App Store ↗
+            <a href={arabiMobile.playStore} target="_blank" rel="noreferrer" className="banking__store-link focus-ring">
+              Google Play <span className="btn__arrow">→</span>
             </a>
           </div>
         </div>
