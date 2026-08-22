@@ -1,32 +1,72 @@
-# React + TypeScript + Vite
+# Qossay Kamel — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio website for Qossay Kamel, a Software Engineer specializing in Flutter mobile
+banking applications, full-stack web development (React/TypeScript/Firebase), and AI agent
+engineering (Python, FastAPI, LangGraph).
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + TypeScript
+- Vite
+- Framer Motion (tasteful, reduced-motion-aware animation)
+- Plain CSS with theme tokens (light/dark via CSS custom properties + `localStorage`)
+- No backend, no database, no environment variables
 
-## React Compiler
+## Sections
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Navigation — sticky, blurs on scroll
+2. Hero — name, role, tagline, CTAs, social links, abstract device-frame visual
+3. Expertise strip
+4. About — engineering meets real-world banking business
+5. Featured Work — tiered, editorial project layout
+6. Production Banking Applications — PCNC banking apps with store links and disclaimers
+7. Experience — vertical timeline (desktop) / stacked cards (mobile)
+8. Technology — grouped tool stack
+9. UI/UX & Product Design — Figma work
+10. Education & Languages
+11. GitHub & LinkedIn
+12. Contact — simple form with `mailto:` fallback
+13. Footer
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev       # start local dev server
+npm run build     # type-check and build for production
+npm run preview   # preview the production build locally
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Project Structure
+
+```
+src/
+  data/        # content — profile, experience, education, projects, banking, skills
+  components/  # reusable UI (Nav, ProjectCard)
+  sections/    # page sections composed in App.tsx
+  styles/      # theme tokens and global styles
+  hooks/       # useTheme (persists to localStorage, dark by default)
+```
+
+## Deployment (Vercel)
+
+This is a static Vite build with no server-side requirements, so it deploys cleanly to Vercel:
+
+1. Push this repository to GitHub (`QossayKamel22/QossayKamel-Portfolio`).
+2. In Vercel, **Add New Project → Import Git Repository** and select the repo.
+3. Framework preset: **Vite**. Build command: `npm run build`. Output directory: `dist`.
+4. Deploy — Vercel assigns a `*.vercel.app` preview/production URL automatically.
+5. **Custom domain (optional):** in the Vercel project, go to **Settings → Domains**, add your
+   domain, and follow the DNS instructions Vercel provides (either an `A`/`ALIAS` record to
+   Vercel's IP or a `CNAME` to `cname.vercel-dns.com`, depending on whether it's an apex or
+   subdomain). Propagation is usually automatic once DNS is verified.
+
+No live domain is currently attached to this project — the steps above are for when one is.
+
+## Content Accuracy
+
+All experience, education, and project content is sourced from the verified CV and from public
+GitHub repository content at [github.com/QossayKamel22](https://github.com/QossayKamel22).
+Where a project's public repository was empty or unverifiable (e.g. MAKAN, ReadSpeed), the site
+says so explicitly rather than inventing details. The POS Agent repository is private; only
+CV/GitHub-README-verified facts about it are shown, with no fabricated public link.
