@@ -1,6 +1,8 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { useRef } from "react";
 import { profile } from "../data/profile";
 import { Avatar } from "../components/Avatar";
+import heroBg from "../assets/hero/hero-bg.jpg";
 import "./hero.css";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -24,9 +26,31 @@ const floatChips = [
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (reduceMotion) return;
+    const el = heroRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    el.style.setProperty("--cursor-x", `${e.clientX - rect.left}px`);
+    el.style.setProperty("--cursor-y", `${e.clientY - rect.top}px`);
+  };
 
   return (
-    <section id="top" className="hero">
+    <section id="top" className="hero" ref={heroRef} onMouseMove={handleMouseMove}>
+      <div className="hero__cursor-light" aria-hidden="true" />
+      <motion.div
+        className="hero__bg"
+        style={{ backgroundImage: `url(${heroBg})` }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: EASE }}
+        aria-hidden="true"
+      >
+        <div className="hero__bg-overlay" />
+      </motion.div>
+
       <div className="container hero__grid">
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.span variants={item} className="eyebrow">
@@ -44,10 +68,13 @@ export function Hero() {
           <motion.p variants={item} className="hero__supporting">
             {profile.supporting}
           </motion.p>
+          <motion.p variants={item} className="hero__region">
+            UAE · Saudi Arabia · GCC
+          </motion.p>
 
           <motion.div variants={item} className="hero__ctas">
             <a href="#work" className="btn btn-primary focus-ring">
-              View Work <span className="btn__arrow">→</span>
+              View My Work <span className="btn__arrow">→</span>
             </a>
             <a href="#contact" className="btn btn-secondary focus-ring">
               Let's Connect
@@ -60,6 +87,14 @@ export function Hero() {
             </a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="focus-ring">
               LinkedIn ↗
+            </a>
+            <a
+              href="https://github.com/QossayKamel22/QossayKamel-Portfolio"
+              target="_blank"
+              rel="noreferrer"
+              className="focus-ring hero__repo-link"
+            >
+              GitHub Repository ↗
             </a>
           </motion.div>
         </motion.div>

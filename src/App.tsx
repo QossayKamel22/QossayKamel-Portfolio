@@ -2,6 +2,7 @@ import { useTheme } from "./hooks/useTheme";
 import { Nav } from "./components/Nav";
 import { Hero } from "./sections/Hero";
 import { ExpertiseStrip } from "./sections/ExpertiseStrip";
+import { Capabilities } from "./sections/Capabilities";
 import { About } from "./sections/About";
 import { FeaturedWork } from "./sections/FeaturedWork";
 import { Banking } from "./sections/Banking";
@@ -27,6 +28,7 @@ function App() {
       <main>
         <Hero />
         <ExpertiseStrip />
+        <Capabilities />
         <About />
         <FeaturedWork />
         <Banking />

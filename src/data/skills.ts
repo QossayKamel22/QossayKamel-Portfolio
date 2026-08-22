@@ -5,8 +5,8 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
-    category: "Mobile",
-    items: ["Flutter", "Dart", "Firebase", "REST APIs", "Provider", "GetX", "iOS & Android"],
+    category: "Mobile Development",
+    items: ["Flutter", "Dart", "GetX", "Provider", "Firebase", "iOS", "Android"],
   },
   {
     category: "Frontend",
@@ -17,12 +17,12 @@ export const skillGroups: SkillGroup[] = [
     items: ["Python", "FastAPI", "Node.js", "Express.js", "Java", "Spring Boot", "SQLAlchemy", "Alembic", "Docker"],
   },
   {
-    category: "Databases",
-    items: ["PostgreSQL", "Cloud Firestore", "SQL"],
+    category: "Database",
+    items: ["Firebase", "Cloud Firestore", "PostgreSQL", "SQL"],
   },
   {
-    category: "AI & Automation",
-    items: ["LangGraph", "AI Agents", "LLM Tool-Calling Workflows", "Agentic Workflows", "Business Process Automation"],
+    category: "AI",
+    items: ["LangGraph", "AI Agents", "LLM Tool-Calling", "Agentic Workflows"],
   },
   {
     category: "Design",
@@ -30,7 +30,7 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     category: "Developer Tools",
-    items: ["Git", "GitHub", "Version Control", "Docker"],
+    items: ["Git", "GitHub", "Version Control", "VS Code", "Xcode", "Android Studio"],
   },
 ];
 

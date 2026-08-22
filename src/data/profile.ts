@@ -1,7 +1,7 @@
 export const profile = {
   name: "Qossay Kamel",
   fullName: "Qossay Mojahed Dawoud Kamel",
-  title: "Software Engineer · Mobile & Full-Stack · FinTech & AI",
+  title: "Mobile · Full-Stack · FinTech · AI",
   tagline: "Flutter · React · Python · Firebase · AI Agents · LangGraph",
   supporting:
     "Building production-oriented digital products across mobile, web, banking, and intelligent business workflows.",

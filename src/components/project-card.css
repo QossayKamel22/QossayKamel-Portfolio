@@ -69,12 +69,14 @@
 .pcard:hover .pcard__mark-content { transform: scale(1.05); }
 
 .pcard__logo-img {
-  width: 96px;
-  height: 96px;
+  width: 148px;
+  height: 148px;
   object-fit: contain;
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.32));
 }
 
-.pcard--sm .pcard__logo-img { width: 64px; height: 64px; }
+.pcard--lg .pcard__logo-img { width: 220px; height: 220px; }
+.pcard--sm .pcard__logo-img { width: 88px; height: 88px; }
 
 .pcard__wordmark {
   font-size: 34px;

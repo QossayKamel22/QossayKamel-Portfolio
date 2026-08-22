@@ -6,20 +6,29 @@
 
 .expertise__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 24px;
 }
 
-@media (max-width: 800px) {
-  .expertise__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@media (max-width: 1000px) {
+  .expertise__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .expertise__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 .expertise__item {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.expertise__index {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
 }
 
 .expertise__label {

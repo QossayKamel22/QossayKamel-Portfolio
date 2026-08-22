@@ -29,7 +29,7 @@ export const projects: Project[] = [
     featured: true,
     image: "flow.jpg",
     imageAlt: "FLOW CRM sign-in, AI onboarding, dashboard, and leads screens",
-    logo: "flow.svg",
+    logo: "flow.png",
     hasVersionControl: true,
   },
   {
@@ -39,11 +39,12 @@ export const projects: Project[] = [
     category: "Mobile · FinTech · AI Agents",
     description:
       "An Arabic-first Flutter app for personal finance — income, expenses, budgets, transfers, bills, and savings goals — backed by a Python/FastAPI service and PostgreSQL, with Firebase handling authentication. A LangGraph-based AI agent layer is implemented as the foundation for AI-powered financial insights (a real /ai service with agents, tools, and prompts in the codebase); it is engineering groundwork, not a shipped user-facing AI feature yet. Currently pre-Milestone-A: functional, tested code, pending a live Firebase project, live LLM provider, and deployed database for full production.",
-    tech: ["Flutter", "Dart", "Python", "FastAPI", "PostgreSQL", "LangGraph", "Firebase"],
+    tech: ["Flutter", "Dart", "GetX", "Python", "FastAPI", "PostgreSQL", "LangGraph"],
     repo: "https://github.com/QossayKamel22/MIZAN",
     featured: true,
     image: "mizan.jpg",
     imageAlt: "MIZAN home, transactions, bills, and AI insights screens",
+    logo: "mizan.png",
     hasVersionControl: true,
   },
   {
@@ -58,7 +59,7 @@ export const projects: Project[] = [
     featured: true,
     image: "nova.jpg",
     imageAlt: "NOVA landing, auth, and dashboard screens",
-    logo: "nova.svg",
+    logo: "nova.png",
     hasVersionControl: true,
   },
   {
@@ -82,10 +83,11 @@ export const projects: Project[] = [
     category: "Mobile · Cross-Platform",
     description:
       "A Flutter and Firebase habit-tracking app spanning iOS, Android, macOS, and web from a single codebase — real Firebase Authentication, Firestore persistence with security rules, streak calculations, completion-rate metrics, and weekly insights. A 'PULSE AI' visual placeholder is present but has no LLM integration in the current version.",
-    tech: ["Flutter", "Firebase Auth", "Cloud Firestore", "FCM", "fl_chart"],
+    tech: ["Flutter", "GetX", "Firebase Auth", "Cloud Firestore", "FCM"],
     repo: "https://github.com/QossayKamel22/PULSE",
     image: "pulse.jpg",
     imageAlt: "PULSE home, habit detail, insights, and profile screens",
+    logo: "pulse.png",
     hasVersionControl: true,
   },
   {
@@ -95,10 +97,11 @@ export const projects: Project[] = [
     category: "Mobile · EdTech",
     description:
       "A Flutter reading app for building reading speed and comprehension — a library with books, PDFs, and articles, a focus-mode speed reader with adjustable WPM, and statistics tracking words read, sessions, and streaks over time.",
-    tech: ["Flutter", "Dart"],
+    tech: ["Flutter", "Dart", "GetX", "Firebase Auth"],
     repo: "https://github.com/QossayKamel22/ReadSpeed",
     image: "readspeed.jpg",
     imageAlt: "ReadSpeed onboarding, home, library, and speed reader screens",
+    logo: "readspeed.png",
     hasVersionControl: true,
   },
   {
@@ -151,8 +154,9 @@ export const projects: Project[] = [
     tagline: "Real-Estate Discovery Concept",
     category: "Concept · PropTech",
     description:
-      "A concept for a UAE real-estate discovery and comparison platform, currently at the early planning stage.",
+      "A concept for a UAE real-estate discovery and comparison platform. Brand identity and product concept are defined; the codebase has not been started yet, so no technology stack is claimed for it.",
     tech: [],
+    logo: "makan.png",
   },
   {
     slug: "academic-freelance",
