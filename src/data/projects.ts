@@ -16,7 +16,7 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // Featured
+  // Priority — always visible
   {
     slug: "flow",
     name: "FLOW",
@@ -63,20 +63,6 @@ export const projects: Project[] = [
     hasVersionControl: true,
   },
   {
-    slug: "pos-agent",
-    name: "POS Agent",
-    tagline: "Restaurant Operations Monitoring Agent",
-    category: "AI Agent Engineering",
-    description:
-      "An operational monitoring system for restaurants: it reads a branch's live POS data, detects deviations from that branch's own baseline using a statistical (non-ML) detection layer, and routes alerts to the responsible manager through a LangGraph-based alert lifecycle. Backed by 90+ documented architecture decisions and a full requirements/spec trail. The backend, detection engine, and Flutter client are in active development.",
-    tech: ["Python", "FastAPI", "LangGraph", "PostgreSQL", "SQLAlchemy", "Flutter", "Docker"],
-    isPrivate: true,
-    status: "Private repository — details available on request.",
-    featured: true,
-    hasVersionControl: true,
-  },
-  // More work
-  {
     slug: "pulse",
     name: "PULSE",
     tagline: "Habit & Daily-Rhythm Tracker",
@@ -85,6 +71,7 @@ export const projects: Project[] = [
       "A Flutter and Firebase habit-tracking app spanning iOS, Android, macOS, and web from a single codebase — real Firebase Authentication, Firestore persistence with security rules, streak calculations, completion-rate metrics, and weekly insights. A 'PULSE AI' visual placeholder is present but has no LLM integration in the current version.",
     tech: ["Flutter", "GetX", "Firebase Auth", "Cloud Firestore", "FCM"],
     repo: "https://github.com/QossayKamel22/PULSE",
+    featured: true,
     image: "pulse.jpg",
     imageAlt: "PULSE home, habit detail, insights, and profile screens",
     logo: "pulse.png",
@@ -99,11 +86,37 @@ export const projects: Project[] = [
       "A Flutter reading app for building reading speed and comprehension — a library with books, PDFs, and articles, a focus-mode speed reader with adjustable WPM, and statistics tracking words read, sessions, and streaks over time.",
     tech: ["Flutter", "Dart", "GetX", "Firebase Auth"],
     repo: "https://github.com/QossayKamel22/ReadSpeed",
+    featured: true,
     image: "readspeed.jpg",
     imageAlt: "ReadSpeed onboarding, home, library, and speed reader screens",
     logo: "readspeed.png",
     hasVersionControl: true,
   },
+  {
+    slug: "makan",
+    name: "MAKAN",
+    tagline: "Real-Estate Discovery Concept",
+    category: "Concept · PropTech",
+    description:
+      "A concept for a UAE real-estate discovery and comparison platform. Brand identity and product concept are defined; the codebase has not been started yet, so no technology stack is claimed for it.",
+    tech: [],
+    featured: true,
+    logo: "makan.png",
+  },
+  {
+    slug: "pos-agent",
+    name: "POS Agent",
+    tagline: "Restaurant Operations Monitoring Agent",
+    category: "AI Agent Engineering",
+    description:
+      "An operational monitoring system for restaurants: it reads a branch's live POS data, detects deviations from that branch's own baseline using a statistical (non-ML) detection layer, and routes alerts to the responsible manager through a LangGraph-based alert lifecycle. Backed by 90+ documented architecture decisions and a full requirements/spec trail. The backend, detection engine, and Flutter client are in active development.",
+    tech: ["Python", "FastAPI", "LangGraph", "PostgreSQL", "SQLAlchemy", "Flutter", "Docker"],
+    isPrivate: true,
+    status: "Private repository — details available on request.",
+    featured: true,
+    hasVersionControl: true,
+  },
+  // More work
   {
     slug: "ironfit",
     name: "IronFit",
@@ -113,7 +126,7 @@ export const projects: Project[] = [
       "A Flutter fitness app scaffold connecting gym owners, coaches, and trainers — planned around custom training plans, workout tracking, and gym-owner analytics. The current public repository is an early-stage Flutter project scaffold without a detailed feature README yet.",
     tech: ["Flutter", "Dart", "Firebase", "Provider"],
     repo: "https://github.com/QossayKamel22/ironFit",
-    logo: "ironfit.png",
+    logo: "ironfit-app.png",
     hasVersionControl: true,
   },
   {
@@ -127,9 +140,9 @@ export const projects: Project[] = [
     repo: "https://github.com/QossayKamel22/NASAQ",
     image: "nasaq.jpg",
     imageAlt: "NASAQ onboarding, login, home, and product screens",
+    logo: "nasaq.png",
     hasVersionControl: true,
   },
-  // Additional
   {
     slug: "ishop",
     name: "iShop",
@@ -147,16 +160,6 @@ export const projects: Project[] = [
     description:
       "A product design project connecting car owners with service providers — scheduling, notifications, pricing, and a loyalty program. This is a UI/UX design concept built in Figma; it has not yet been engineered into a codebase, so no technical stack is claimed for it.",
     tech: ["Figma", "UI/UX", "Wireframing", "Prototyping"],
-  },
-  {
-    slug: "makan",
-    name: "MAKAN",
-    tagline: "Real-Estate Discovery Concept",
-    category: "Concept · PropTech",
-    description:
-      "A concept for a UAE real-estate discovery and comparison platform. Brand identity and product concept are defined; the codebase has not been started yet, so no technology stack is claimed for it.",
-    tech: [],
-    logo: "makan.png",
   },
   {
     slug: "academic-freelance",

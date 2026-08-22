@@ -63,10 +63,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.4s var(--ease);
+  transition: transform 0.45s var(--ease);
 }
 
-.pcard:hover .pcard__mark-content { transform: scale(1.05); }
+.pcard:hover .pcard__mark-content { transform: scale(1.045) translateY(-2px); }
 
 .pcard__logo-img {
   width: 148px;
@@ -122,7 +122,10 @@
 .pcard__title {
   font-size: 22px;
   margin-bottom: 4px;
+  transition: transform 0.35s var(--ease);
 }
+
+.pcard:hover .pcard__title { transform: translateX(2px); }
 
 .pcard--lg .pcard__title { font-size: 27px; }
 .pcard--sm .pcard__title { font-size: 19px; }
