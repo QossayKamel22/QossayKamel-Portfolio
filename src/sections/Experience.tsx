@@ -26,7 +26,10 @@ export function Experience() {
                   <h3>{item.role}</h3>
                   <span className="timeline__period">{item.period}</span>
                 </div>
-                <p className="timeline__org">{item.org}</p>
+                <div className="timeline__org-row">
+                  <p className="timeline__org">{item.org}</p>
+                  {item.type && <span className="tag timeline__type">{item.type}</span>}
+                </div>
                 <ul>
                   {item.bullets.map((b, j) => (
                     <li key={j}>{b}</li>

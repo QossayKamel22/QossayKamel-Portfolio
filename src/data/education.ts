@@ -10,7 +10,7 @@ export const education: EducationItem[] = [
     title: "BSc in Software Engineering",
     org: "Bethlehem University",
     period: "2020 – 2024",
-    detail: "GPA: 2.93 / 4.0",
+    detail: "GPA 2.93",
   },
   {
     title: "High School Diploma — IT Stream",

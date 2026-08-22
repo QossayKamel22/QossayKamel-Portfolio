@@ -72,11 +72,23 @@
   white-space: nowrap;
 }
 
+.timeline__org-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+}
+
 .timeline__org {
   color: var(--accent);
   font-weight: 600;
   font-size: 14px;
-  margin: 0 0 14px;
+  margin: 0;
+}
+
+.timeline__type {
+  font-size: 11px;
+  padding: 3px 9px;
 }
 
 .timeline__content ul {

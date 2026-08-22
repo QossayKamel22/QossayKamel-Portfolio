@@ -2,6 +2,7 @@ export interface ExperienceItem {
   role: string;
   org: string;
   period: string;
+  type?: string;
   bullets: string[];
 }
 
@@ -20,12 +21,13 @@ export const experience: ExperienceItem[] = [
   {
     role: "Flutter Developer",
     org: "PCNC IT Solutions",
-    period: "Aug 2024 – Jan 2025 · part-time, alongside university",
+    period: "Aug 2024 – Jan 2025 · After graduation",
+    type: "Full-time",
     bullets: [
-      "Contributed to production-grade Flutter mobile banking apps (iOS & Android) for Bank of Palestine, Cairo Amman Bank, Arab Islamic Bank, Safa Bank, and Egyptian Arab Land Bank.",
+      "Worked as a full-time Flutter Developer at PCNC IT Solutions, contributing to production banking applications and mobile digital banking experiences for iOS and Android.",
+      "Contributed to production-grade Flutter mobile banking apps for Bank of Palestine, Cairo Amman Bank, Arab Islamic Bank, Safa Bank, and Egyptian Arab Land Bank.",
       "Implemented banking features and screens, integrated APIs with banking backends, and built authentication and secure user flows.",
-      "Debugged and maintained live production apps, collaborating with banking and technical teams.",
-      "Translated business and banking requirements into working software within existing production codebases.",
+      "Debugged and maintained live production apps, collaborating cross-functionally with banking and technical teams using Git for version control.",
     ],
   },
   {
