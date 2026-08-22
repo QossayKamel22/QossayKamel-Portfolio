@@ -1,5 +1,10 @@
 # Qossay Kamel — Portfolio
 
+<img width="1023" height="1537" alt="4D17CB7F-8A32-49A8-B0D2-6002F57811A4" src="https://github.com/user-attachments/assets/7968935c-d33e-42d2-bfb6-33191e55ee24" />
+
+---
+
+
 Personal portfolio website for Qossay Kamel, a Software Engineer specializing in Flutter mobile
 banking applications, full-stack web development (React/TypeScript/Firebase), and AI agent
 engineering (Python, FastAPI, LangGraph).
