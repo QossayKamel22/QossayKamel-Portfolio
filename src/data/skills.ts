@@ -28,6 +28,10 @@ export const skillGroups: SkillGroup[] = [
     category: "Design",
     items: ["Figma", "UI/UX", "Wireframing", "Prototyping", "Branding"],
   },
+  {
+    category: "Developer Tools",
+    items: ["Git", "GitHub", "Version Control", "Docker"],
+  },
 ];
 
 export interface FigmaWork {

@@ -1,8 +1,12 @@
-import { projects } from "../data/projects";
+import { useState } from "react";
+import { projects, type Project } from "../data/projects";
 import { ProjectCard } from "../components/ProjectCard";
+import { ProjectDetailModal } from "../components/ProjectDetailModal";
 import "./featured-work.css";
 
 export function FeaturedWork() {
+  const [active, setActive] = useState<Project | null>(null);
+
   const featured = projects.filter((p) => p.featured);
   const more = projects.filter((p) => !p.featured && p.image);
   const additional = projects.filter((p) => !p.featured && !p.image);
@@ -20,7 +24,7 @@ export function FeaturedWork() {
         <div className="featured__grid">
           {featured.map((p, i) => (
             <div key={p.slug} className={i < 2 ? "featured__span2" : ""}>
-              <ProjectCard project={p} size={i < 2 ? "lg" : "md"} />
+              <ProjectCard project={p} size={i < 2 ? "lg" : "md"} onOpen={setActive} />
             </div>
           ))}
         </div>
@@ -30,7 +34,7 @@ export function FeaturedWork() {
             <h3 className="featured__subheading">More Work</h3>
             <div className="featured__tier2">
               {more.map((p) => (
-                <ProjectCard key={p.slug} project={p} size="sm" />
+                <ProjectCard key={p.slug} project={p} size="sm" onOpen={setActive} />
               ))}
             </div>
           </>
@@ -41,12 +45,14 @@ export function FeaturedWork() {
             <h3 className="featured__subheading">Additional Projects</h3>
             <div className="featured__tier3">
               {additional.map((p) => (
-                <ProjectCard key={p.slug} project={p} size="sm" />
+                <ProjectCard key={p.slug} project={p} size="sm" onOpen={setActive} />
               ))}
             </div>
           </>
         )}
       </div>
+
+      <ProjectDetailModal project={active} onClose={() => setActive(null)} />
     </section>
   );
 }

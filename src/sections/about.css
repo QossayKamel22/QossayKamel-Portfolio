@@ -17,6 +17,22 @@
 
 .about__body p:last-child { margin-bottom: 0; }
 
+.about__identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.about__identity .avatar--md { width: 56px; height: 56px; }
+
+.about__name {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text);
+}
+
 .about__statement {
   font-size: clamp(19px, 2.4vw, 24px);
   font-weight: 600;

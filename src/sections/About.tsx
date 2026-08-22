@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/profile";
+import { Avatar } from "../components/Avatar";
 import "./about.css";
 
 export function About() {
@@ -7,7 +8,13 @@ export function About() {
     <section id="about" className="about">
       <div className="container about__grid">
         <div>
-          <span className="eyebrow">About</span>
+          <div className="about__identity">
+            <Avatar size="md" />
+            <div>
+              <span className="eyebrow" style={{ marginBottom: 2 }}>About</span>
+              <p className="about__name">{profile.name}</p>
+            </div>
+          </div>
           <h2 className="section-heading">Where engineering meets real banking business</h2>
           <p className="about__statement">
             Building software is only part of the job.

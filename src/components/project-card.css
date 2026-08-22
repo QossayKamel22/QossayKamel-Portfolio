@@ -8,7 +8,22 @@
   box-shadow: var(--shadow);
   height: 100%;
   position: relative;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
+
+.pcard::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: radial-gradient(360px circle at var(--spot-x, 50%) var(--spot-y, 0%), var(--accent-soft), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pcard:hover::after { opacity: 1; }
 
 .pcard:hover {
   transform: translateY(-4px);
@@ -16,43 +31,71 @@
   border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
 }
 
-.pcard__media {
+.pcard__mark {
   position: relative;
-  overflow: hidden;
-  background: var(--bg-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   aspect-ratio: 16 / 10;
+  background: linear-gradient(150deg, var(--accent-soft), var(--bg-subtle) 65%);
+  background-size: cover;
+  background-position: center;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
 }
 
-.pcard--lg .pcard__media { aspect-ratio: 16 / 9; }
+.pcard--lg .pcard__mark { aspect-ratio: 16 / 9; }
 
-.pcard__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  transition: transform 0.6s var(--ease);
-}
-
-.pcard:hover .pcard__media img {
-  transform: scale(1.02);
-}
-
-.pcard__media-glow {
+.pcard__mark-veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.08));
-  opacity: 0;
-  transition: opacity 0.4s var(--ease);
-  pointer-events: none;
+  background: color-mix(in srgb, var(--bg-elevated) 80%, transparent);
+  backdrop-filter: blur(28px) saturate(1.1);
+  -webkit-backdrop-filter: blur(28px) saturate(1.1);
 }
 
-.pcard:hover .pcard__media-glow { opacity: 1; }
+.pcard__mark-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.4s var(--ease);
+}
+
+.pcard:hover .pcard__mark-content { transform: scale(1.05); }
+
+.pcard__logo-img {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+.pcard--sm .pcard__logo-img { width: 64px; height: 64px; }
+
+.pcard__wordmark {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.pcard--lg .pcard__wordmark { font-size: 44px; }
+.pcard--sm .pcard__wordmark { font-size: 26px; }
 
 .pcard__body {
   padding: 28px;
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
+  z-index: 1;
 }
 
 .pcard--lg .pcard__body { padding: 32px 36px; }
@@ -98,7 +141,7 @@
   color: var(--text-secondary);
   font-size: 15px;
   line-height: 1.65;
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   flex-grow: 1;
 }
 
@@ -114,14 +157,26 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 22px;
+  margin-bottom: 14px;
+}
+
+.pcard__control {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin: 0 0 18px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .pcard__actions {
   margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.pcard__cta {
+.pcard__cta, .pcard__details {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -129,16 +184,21 @@
   font-weight: 600;
   color: var(--text);
   transition: color 0.2s var(--ease);
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
 }
 
-.pcard__cta:hover { color: var(--accent); }
+.pcard__details {
+  color: var(--text-tertiary);
+}
+
+.pcard__cta:hover, .pcard__details:hover { color: var(--accent); }
+.pcard__cta:hover .btn__arrow, .pcard__details:hover .btn__arrow { transform: translateX(3px); }
 
 .pcard__private-note {
   font-size: 13px;
   color: var(--text-tertiary);
   font-style: italic;
-}
-
-.pcard--no-image .pcard__body {
-  padding-top: 28px;
 }

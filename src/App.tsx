@@ -7,6 +7,7 @@ import { FeaturedWork } from "./sections/FeaturedWork";
 import { Banking } from "./sections/Banking";
 import { Experience } from "./sections/Experience";
 import { Technology } from "./sections/Technology";
+import { Workflow } from "./sections/Workflow";
 import { UIUX } from "./sections/UIUX";
 import { EducationSection } from "./sections/EducationSection";
 import { Social } from "./sections/Social";
@@ -31,6 +32,7 @@ function App() {
         <Banking />
         <Experience />
         <Technology />
+        <Workflow />
         <UIUX />
         <EducationSection />
         <Social />

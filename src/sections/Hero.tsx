@@ -1,4 +1,4 @@
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { profile } from "../data/profile";
 import { Avatar } from "../components/Avatar";
 import "./hero.css";
@@ -15,17 +15,29 @@ const item: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 };
 
+const floatChips = [
+  { label: "FLOW", top: "2%", left: "2%", duration: 5.5, delay: 0 },
+  { label: "MIZAN", top: "14%", right: "0%", duration: 6.2, delay: 0.4 },
+  { label: "NOVA", bottom: "16%", left: "0%", duration: 5.8, delay: 0.8 },
+  { label: "PULSE", bottom: "0%", right: "4%", duration: 6.5, delay: 1.1 },
+];
+
 export function Hero() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="top" className="hero">
       <div className="container hero__grid">
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.span variants={item} className="eyebrow">
-            {profile.title}
+            Software Engineer
           </motion.span>
           <motion.h1 variants={item} className="hero__name">
             {profile.name}
           </motion.h1>
+          <motion.p variants={item} className="hero__title">
+            {profile.title}
+          </motion.p>
           <motion.p variants={item} className="hero__tagline">
             {profile.tagline}
           </motion.p>
@@ -38,7 +50,7 @@ export function Hero() {
               View Work <span className="btn__arrow">→</span>
             </a>
             <a href="#contact" className="btn btn-secondary focus-ring">
-              Get in Touch
+              Let's Connect
             </a>
           </motion.div>
 
@@ -60,6 +72,17 @@ export function Hero() {
         >
           <div className="hero__portrait-glow" aria-hidden="true" />
           <Avatar size="lg" />
+          {floatChips.map((c) => (
+            <motion.span
+              key={c.label}
+              className="hero__chip"
+              style={{ top: c.top, left: c.left, right: c.right, bottom: c.bottom }}
+              animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
+              transition={{ duration: c.duration, delay: c.delay, repeat: Infinity, ease: "easeInOut" }}
+            >
+              {c.label}
+            </motion.span>
+          ))}
         </motion.div>
       </div>
     </section>

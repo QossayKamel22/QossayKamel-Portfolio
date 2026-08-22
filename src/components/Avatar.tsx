@@ -2,9 +2,8 @@ import { useState } from "react";
 import "./avatar.css";
 
 /**
- * Profile photo slot. Drop the real photo at `public/profile.jpg` (served at
- * the site root as `/profile.jpg`) and it renders automatically — no code
- * changes needed. Until then, a monogram placeholder is shown instead of a
+ * Renders `public/profile.jpg` (served at the site root as `/profile.jpg`).
+ * Falls back to a monogram if the file is ever missing, instead of a
  * fabricated or stock photo.
  */
 export function Avatar({ size = "lg", initials = "QK" }: { size?: "lg" | "md"; initials?: string }) {
