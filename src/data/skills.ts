@@ -1,0 +1,56 @@
+export interface SkillGroup {
+  category: string;
+  items: string[];
+}
+
+export const skillGroups: SkillGroup[] = [
+  {
+    category: "Mobile",
+    items: ["Flutter", "Dart", "Firebase", "REST APIs", "Provider", "GetX", "iOS & Android"],
+  },
+  {
+    category: "Frontend",
+    items: ["React", "TypeScript", "JavaScript", "Vite", "HTML", "CSS"],
+  },
+  {
+    category: "Backend",
+    items: ["Python", "FastAPI", "Node.js", "Express.js", "Java", "Spring Boot", "SQLAlchemy", "Alembic", "Docker"],
+  },
+  {
+    category: "Databases",
+    items: ["PostgreSQL", "Cloud Firestore", "SQL"],
+  },
+  {
+    category: "AI & Automation",
+    items: ["LangGraph", "AI Agents", "LLM Tool-Calling Workflows", "Agentic Workflows", "Business Process Automation"],
+  },
+  {
+    category: "Design",
+    items: ["Figma", "UI/UX", "Wireframing", "Prototyping", "Branding"],
+  },
+];
+
+export interface FigmaWork {
+  name: string;
+  description: string;
+  url: string;
+}
+
+export const figmaWork: FigmaWork[] = [
+  {
+    name: "AI POS Agent App",
+    description:
+      "AI-powered POS / business agent concept — the product-design counterpart to the POS Agent engineering work, focused on turning operational data into actionable alerts for managers. Concept design — not a claim of a deployed product.",
+    url: "https://www.figma.com/make/mvuLWhAlltg9lPSnA0nbf9/AI-POS-Agent-App",
+  },
+  {
+    name: "iCAR",
+    description: "UI/UX product design project for a car services booking concept.",
+    url: "https://www.figma.com/design/cP3WIWxro2CAscEiHsgSf2/iCAR",
+  },
+  {
+    name: "PalGram",
+    description: "UI/UX product design project.",
+    url: "https://www.figma.com/design/sTwNl2EkM2gizHlls1Ii7G/PalGram",
+  },
+];
