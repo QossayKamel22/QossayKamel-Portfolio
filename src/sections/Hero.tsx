@@ -9,20 +9,13 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const container: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
 const item: Variants = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
 };
-
-const floatChips = [
-  { label: "FLOW", top: "2%", left: "2%", duration: 5.5, delay: 0 },
-  { label: "MIZAN", top: "14%", right: "0%", duration: 6.2, delay: 0.4 },
-  { label: "NOVA", bottom: "16%", left: "0%", duration: 5.8, delay: 0.8 },
-  { label: "PULSE", bottom: "0%", right: "4%", duration: 6.5, delay: 1.1 },
-];
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
@@ -45,7 +38,7 @@ export function Hero() {
         style={{ backgroundImage: `url(${heroBg})` }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: EASE }}
+        transition={{ duration: 1.4, ease: EASE }}
         aria-hidden="true"
       >
         <div className="hero__bg-overlay" />
@@ -67,6 +60,9 @@ export function Hero() {
           </motion.p>
           <motion.p variants={item} className="hero__supporting">
             {profile.supporting}
+          </motion.p>
+          <motion.p variants={item} className="hero__proof">
+            Production Banking · Mobile Engineering · Digital Products
           </motion.p>
           <motion.p variants={item} className="hero__region">
             UAE · Saudi Arabia · GCC
@@ -100,24 +96,15 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          className="hero__visual"
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
+          className="hero__portrait-wrap"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
         >
-          <div className="hero__portrait-glow" aria-hidden="true" />
-          <Avatar size="lg" />
-          {floatChips.map((c) => (
-            <motion.span
-              key={c.label}
-              className="hero__chip"
-              style={{ top: c.top, left: c.left, right: c.right, bottom: c.bottom }}
-              animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
-              transition={{ duration: c.duration, delay: c.delay, repeat: Infinity, ease: "easeInOut" }}
-            >
-              {c.label}
-            </motion.span>
-          ))}
+          <div className="hero__portrait-frame">
+            <Avatar size="portrait" />
+            <div className="hero__portrait-vignette" aria-hidden="true" />
+          </div>
         </motion.div>
       </div>
     </section>

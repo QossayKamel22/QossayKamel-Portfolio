@@ -6,7 +6,13 @@ import "./avatar.css";
  * Falls back to a monogram if the file is ever missing, instead of a
  * fabricated or stock photo.
  */
-export function Avatar({ size = "lg", initials = "QK" }: { size?: "lg" | "md"; initials?: string }) {
+export function Avatar({
+  size = "lg",
+  initials = "QK",
+}: {
+  size?: "lg" | "md" | "portrait";
+  initials?: string;
+}) {
   const [failed, setFailed] = useState(false);
 
   return (

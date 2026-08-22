@@ -13,11 +13,21 @@
 .avatar--lg { width: 300px; height: 300px; }
 .avatar--md { width: 88px; height: 88px; }
 
+.avatar--portrait {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  border: none;
+  background: #0c0c10;
+}
+
 .avatar__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+.avatar--portrait .avatar__img { object-position: 50% 22%; }
 
 .avatar__monogram {
   font-weight: 700;
@@ -31,6 +41,7 @@
 
 .avatar--lg .avatar__monogram { font-size: 88px; }
 .avatar--md .avatar__monogram { font-size: 28px; }
+.avatar--portrait .avatar__monogram { font-size: 96px; }
 
 .avatar__ring {
   position: absolute;
@@ -39,3 +50,5 @@
   box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
   pointer-events: none;
 }
+
+.avatar--portrait .avatar__ring { border-radius: inherit; }
