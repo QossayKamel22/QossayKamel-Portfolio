@@ -2,7 +2,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { useRef } from "react";
 import { profile } from "../data/profile";
 import { Avatar } from "../components/Avatar";
-import heroBg from "../assets/hero/hero-bg.jpg";
+import heroBg from "../assets/hero/hero-bg.webp";
 import "./hero.css";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -97,14 +97,13 @@ export function Hero() {
 
         <motion.div
           className="hero__portrait-wrap"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          whileHover={reduceMotion ? undefined : { scale: 1.015 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
         >
-          <div className="hero__portrait-frame">
-            <Avatar size="portrait" />
-            <div className="hero__portrait-vignette" aria-hidden="true" />
-          </div>
+          <div className="hero__portrait-glow" aria-hidden="true" />
+          <Avatar size="portrait" />
         </motion.div>
       </div>
     </section>

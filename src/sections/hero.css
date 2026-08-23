@@ -155,40 +155,27 @@
 .hero__repo-link:hover { border-color: var(--accent); }
 
 .hero__portrait-wrap {
+  position: relative;
   display: flex;
   justify-content: center;
-}
-
-.hero__portrait-frame {
-  position: relative;
-  width: min(400px, 80vw);
-  aspect-ratio: 4 / 5;
-  border-radius: 48px 12px 48px 12px;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
-  box-shadow:
-    0 24px 60px rgba(0,0,0,0.45),
-    0 2px 0 rgba(255,255,255,0.02) inset,
-    -1px 0 0 var(--accent-glow) inset;
-  background: #0c0c10;
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
-}
-
-.hero__portrait-frame:hover {
-  transform: scale(1.015);
-  box-shadow:
-    0 28px 68px rgba(0,0,0,0.5),
-    0 2px 0 rgba(255,255,255,0.03) inset,
-    -1px 0 0 var(--accent-glow) inset;
+  align-items: center;
 }
 
 @media (max-width: 900px) {
-  .hero__portrait-frame { width: min(320px, 70vw); margin-top: 8px; }
+  .hero__portrait-wrap { margin-top: 8px; }
 }
 
-.hero__portrait-vignette {
+.hero__portrait-glow {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.4) 100%);
+  inset: -8%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--accent-glow), transparent 72%);
+  filter: blur(36px);
+  z-index: 0;
   pointer-events: none;
+}
+
+.hero__portrait-wrap .avatar--portrait {
+  position: relative;
+  z-index: 1;
 }
