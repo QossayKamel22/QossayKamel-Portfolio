@@ -17,6 +17,10 @@ export function ProjectDetailModal({ project, onClose }: { project: Project | nu
   }, [project, onClose]);
 
   const image = project ? resolveProjectImage(project.image) : undefined;
+  const gallery =
+    project?.gallery
+      ?.map((g) => ({ src: resolveProjectImage(g.src), alt: g.alt }))
+      .filter((g): g is { src: string; alt: string } => !!g.src) ?? [];
 
   return (
     <AnimatePresence>
@@ -74,6 +78,26 @@ export function ProjectDetailModal({ project, onClose }: { project: Project | nu
                     <span className="tag">Git</span>
                     <span className="tag">GitHub</span>
                     <span className="tag">Version Control</span>
+                  </div>
+                </>
+              )}
+
+              {gallery.length > 0 && (
+                <>
+                  <h4 className="pmodal__label">Screenshots</h4>
+                  <div className="pmodal__gallery">
+                    {gallery.map((g, i) => (
+                      <motion.img
+                        key={g.src}
+                        src={g.src}
+                        alt={g.alt}
+                        className="pmodal__gallery-img"
+                        loading="lazy"
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.45, delay: 0.1 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                      />
+                    ))}
                   </div>
                 </>
               )}

@@ -17,6 +17,8 @@ export interface Project {
   hasVersionControl?: boolean;
   /** Full-bleed, blurred ambient background shown behind the card content. */
   bgImage?: string;
+  /** Additional product screenshots shown in the Project Details gallery. */
+  gallery?: { src: string; alt: string }[];
 }
 
 const WIKIMEDIA = "https://commons.wikimedia.org/wiki/Special:FilePath";
@@ -121,6 +123,8 @@ export const projects: Project[] = [
     tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "NestJS", "Firebase"],
     repo: "https://github.com/QossayKamel22/MAKAN",
     featured: true,
+    image: "makan.jpg",
+    imageAlt: "MAKAN real-estate platform homepage with Dubai skyline hero and property discovery sections",
     logo: "makan.png",
     hasVersionControl: true,
     bgImage: bg("Dubai_Marina_Skyline.jpg"),
@@ -137,10 +141,16 @@ export const projects: Project[] = [
     tech: ["Expo", "React Native", "TypeScript", "NestJS", "Firebase"],
     repo: "https://github.com/QossayKamel22/TAMM",
     featured: true,
-    image: "tamm.jpg",
-    imageAlt: "TAMM brand mark artwork",
+    image: "tamm-web.jpg",
+    imageAlt: "TAMM web landing page and service booking, checkout, and payment screens",
     hasVersionControl: true,
     bgImage: bg("Bitcoin_Network_Blue_4k.jpg"),
+    gallery: [
+      {
+        src: "tamm-mobile.jpg",
+        alt: "TAMM mobile app onboarding, home, service details, and booking confirmation screens",
+      },
+    ],
   },
   {
     slug: "pos-agent",

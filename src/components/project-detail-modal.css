@@ -89,6 +89,22 @@
   margin-bottom: 22px;
 }
 
+.pmodal__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.pmodal__gallery-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
 .pmodal__actions {
   margin-top: 8px;
   display: flex;
