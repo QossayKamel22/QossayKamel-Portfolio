@@ -1,14 +1,17 @@
 import { motion } from "framer-motion";
 import { experience } from "../data/experience";
+import { Reveal } from "../components/Reveal";
 import "./experience.css";
 
 export function Experience() {
   return (
     <section id="experience" className="experience">
       <div className="container">
-        <span className="eyebrow">Career</span>
-        <h2 className="section-heading">Experience</h2>
-        <p className="section-lead">From customer-facing digital banking to production Flutter engineering and UI/UX.</p>
+        <Reveal>
+          <span className="eyebrow">Career</span>
+          <h2 className="section-heading">Experience</h2>
+          <p className="section-lead">From customer-facing digital banking to production Flutter engineering and UI/UX.</p>
+        </Reveal>
 
         <ol className="timeline">
           {experience.map((item, i) => (

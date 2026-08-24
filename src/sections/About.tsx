@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { profile } from "../data/profile";
 import { Avatar } from "../components/Avatar";
+import { Reveal } from "../components/Reveal";
 import "./about.css";
 
 export function About() {
   return (
     <section id="about" className="about">
       <div className="container about__grid">
-        <div>
+        <Reveal as="div">
           <div className="about__identity">
             <Avatar size="md" />
             <div>
@@ -21,7 +22,7 @@ export function About() {
             <br />
             Understanding the people and businesses using it is the other.
           </p>
-        </div>
+        </Reveal>
         <div className="about__body">
           {profile.about.map((p, i) => (
             <motion.p

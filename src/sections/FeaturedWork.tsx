@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { projects, type Project } from "../data/projects";
 import { ProjectCard } from "../components/ProjectCard";
 import { ProjectDetailModal } from "../components/ProjectDetailModal";
+import { Reveal } from "../components/Reveal";
 import "./featured-work.css";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -17,12 +18,14 @@ export function FeaturedWork() {
   return (
     <section id="work" className="featured">
       <div className="container">
-        <span className="eyebrow">Featured Work</span>
-        <h2 className="section-heading">Selected engineering &amp; product work</h2>
-        <p className="section-lead">
-          A mix of production banking engineering, full-stack products, and an AI agent system —
-          shown with what's actually verifiable in each public repository.
-        </p>
+        <Reveal>
+          <span className="eyebrow">Featured Work</span>
+          <h2 className="section-heading">Selected engineering &amp; product work</h2>
+          <p className="section-lead">
+            A mix of production banking engineering, full-stack products, and an AI agent system —
+            shown with what's actually verifiable in each public repository.
+          </p>
+        </Reveal>
 
         <div className="featured__grid">
           {priority.map((p) => (

@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { profile } from "../data/profile";
+import { Reveal } from "../components/Reveal";
 import "./contact.css";
 
 export function Contact() {
@@ -17,7 +18,7 @@ export function Contact() {
   return (
     <section id="contact" className="contact">
       <div className="container contact__grid">
-        <div>
+        <Reveal>
           <span className="eyebrow">Get in Touch</span>
           <h2 className="section-heading">Let's build something useful.</h2>
           <p className="section-lead">
@@ -29,9 +30,9 @@ export function Contact() {
             <a href={profile.github} target="_blank" rel="noreferrer" className="focus-ring">GitHub ↗</a>
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="focus-ring">LinkedIn ↗</a>
           </div>
-        </div>
+        </Reveal>
 
-        <form className="card contact__form" onSubmit={handleSubmit}>
+        <Reveal as="form" delay={0.1} className="card contact__form" onSubmit={handleSubmit}>
           <label>
             Name
             <input
@@ -67,7 +68,7 @@ export function Contact() {
           <p className="contact__hint">
             This opens your email client with the message pre-filled — there is no backend, so nothing is sent automatically.
           </p>
-        </form>
+        </Reveal>
       </div>
     </section>
   );

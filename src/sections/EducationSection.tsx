@@ -1,5 +1,6 @@
 import { education, languages } from "../data/education";
 import { resolveProjectLogo } from "../data/projectImages";
+import { Reveal } from "../components/Reveal";
 import "./education.css";
 
 export function EducationSection() {
@@ -7,11 +8,13 @@ export function EducationSection() {
     <section id="education" className="education">
       <div className="container education__grid">
         <div>
-          <span className="eyebrow">Background</span>
-          <h2 className="section-heading">Education</h2>
+          <Reveal>
+            <span className="eyebrow">Background</span>
+            <h2 className="section-heading">Education</h2>
+          </Reveal>
           <div className="education__list">
-            {education.map((e) => (
-              <div key={e.title} className="education__item">
+            {education.map((e, i) => (
+              <Reveal key={e.title} className="education__item" delay={i * 0.08} duration={0.5}>
                 {e.logo && (
                   <span className="education__avatar">
                     <img src={resolveProjectLogo(e.logo)} alt={`${e.org} logo`} />
@@ -25,20 +28,22 @@ export function EducationSection() {
                     {e.detail && <span>{e.detail}</span>}
                   </div>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
 
         <div>
-          <span className="eyebrow">Languages</span>
-          <h2 className="section-heading">Languages</h2>
+          <Reveal delay={0.1}>
+            <span className="eyebrow">Languages</span>
+            <h2 className="section-heading">Languages</h2>
+          </Reveal>
           <div className="education__languages">
-            {languages.map((l) => (
-              <div key={l.name} className="card education__lang">
+            {languages.map((l, i) => (
+              <Reveal key={l.name} className="card education__lang" delay={0.15 + i * 0.08} duration={0.5}>
                 <span>{l.name}</span>
                 <span className="tag">{l.level}</span>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

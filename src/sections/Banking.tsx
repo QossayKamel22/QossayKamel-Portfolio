@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
 import { bankingApps, arabiMobile, bankingDisclaimer, confidentialityNote, noSourceNote } from "../data/banking";
 import { resolveProjectLogo } from "../data/projectImages";
+import { Reveal } from "../components/Reveal";
 import "./banking.css";
 
 export function Banking() {
   return (
     <section id="banking" className="banking">
       <div className="container">
-        <span className="eyebrow">Production Work</span>
-        <h2 className="section-heading">Production Banking Applications</h2>
-        <p className="section-lead">
-          Professional Flutter development across production mobile banking applications at PCNC IT Solutions.
-        </p>
+        <Reveal>
+          <span className="eyebrow">Production Work</span>
+          <h2 className="section-heading">Production Banking Applications</h2>
+          <p className="section-lead">
+            Professional Flutter development across production mobile banking applications at PCNC IT Solutions.
+          </p>
+        </Reveal>
 
         <div className="banking__grid">
           {bankingApps.map((bank, i) => (

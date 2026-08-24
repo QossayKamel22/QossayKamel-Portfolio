@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Reveal } from "../components/Reveal";
 import "./workflow.css";
 
 const steps = [
@@ -15,12 +16,14 @@ export function Workflow() {
   return (
     <section id="workflow" className="workflow">
       <div className="container">
-        <span className="eyebrow">Process</span>
-        <h2 className="section-heading">How I build</h2>
-        <p className="section-lead">
-          A consistent workflow from requirements to production, whether the surface is a Flutter
-          banking screen or a React dashboard.
-        </p>
+        <Reveal>
+          <span className="eyebrow">Process</span>
+          <h2 className="section-heading">How I build</h2>
+          <p className="section-lead">
+            A consistent workflow from requirements to production, whether the surface is a Flutter
+            banking screen or a React dashboard.
+          </p>
+        </Reveal>
 
         <ol className="workflow__steps">
           {steps.map((s, i) => (
