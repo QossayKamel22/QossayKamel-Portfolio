@@ -64,10 +64,11 @@
   flex-direction: column;
   flex: 1;
   padding: 26px 28px 28px;
+  gap: 20px;
 }
 
-.pcard--lg .pcard__content { padding: 32px 36px 36px; }
-.pcard--sm .pcard__content { padding: 20px 22px 22px; }
+.pcard--lg .pcard__content { padding: 32px 36px 36px; gap: 24px; }
+.pcard--sm .pcard__content { padding: 20px 22px 22px; gap: 16px; }
 
 .pcard__top {
   display: flex;
