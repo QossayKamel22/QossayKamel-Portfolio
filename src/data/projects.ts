@@ -209,6 +209,7 @@ export const projects: Project[] = [
     description:
       "A Flutter marketplace concept for selling, trading, and bartering items, with cash-on-delivery and seller/admin dashboards.",
     tech: ["Flutter"],
+    logo: "ishop.png",
     bgImage: bg("Cardboard_boxes_and_their_usage_besides_shipping.jpg"),
   },
   {
