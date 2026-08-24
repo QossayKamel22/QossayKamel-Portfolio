@@ -25,10 +25,8 @@ export function FeaturedWork() {
         </p>
 
         <div className="featured__grid">
-          {priority.map((p, i) => (
-            <div key={p.slug} className={i < 2 ? "featured__span2" : ""}>
-              <ProjectCard project={p} size={i < 2 ? "lg" : "md"} onOpen={setActive} />
-            </div>
+          {priority.map((p) => (
+            <ProjectCard key={p.slug} project={p} size="lg" onOpen={setActive} />
           ))}
         </div>
 

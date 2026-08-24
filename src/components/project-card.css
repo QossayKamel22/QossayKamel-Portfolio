@@ -5,110 +5,96 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow);
   height: 100%;
-  position: relative;
+  box-shadow: var(--shadow);
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
 
-.pcard::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius);
-  background: radial-gradient(360px circle at var(--spot-x, 50%) var(--spot-y, 0%), var(--accent-soft), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.pcard:hover::after { opacity: 1; }
-
 .pcard:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
-  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
 }
 
-.pcard__mark {
+/* Media — large, image-first, App Store style tile */
+.pcard__media {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  width: 100%;
   aspect-ratio: 16 / 10;
-  background: linear-gradient(150deg, var(--accent-soft), var(--bg-subtle) 65%);
-  background-size: cover;
-  background-position: center;
   border: none;
   border-bottom: 1px solid var(--border);
   padding: 0;
+  margin: 0;
   cursor: pointer;
   overflow: hidden;
+  background: var(--bg-subtle);
 }
 
-.pcard--lg .pcard__mark { aspect-ratio: 16 / 9; }
-
-.pcard__mark-veil {
-  position: absolute;
-  inset: 0;
-  background: color-mix(in srgb, var(--bg-elevated) 80%, transparent);
-  backdrop-filter: blur(28px) saturate(1.1);
-  -webkit-backdrop-filter: blur(28px) saturate(1.1);
+.pcard__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s var(--ease);
 }
 
-.pcard__mark-content {
-  position: relative;
-  z-index: 1;
+.pcard:hover .pcard__photo {
+  transform: scale(1.035);
+}
+
+/* Fallback tile for projects without a product screenshot — a clean, centered mark */
+.pcard__mark {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.45s var(--ease);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(155deg, var(--bg-subtle), var(--bg-elevated) 70%);
+  transition: transform 0.5s var(--ease);
 }
 
-.pcard:hover .pcard__mark-content { transform: scale(1.045) translateY(-2px); }
+.pcard:hover .pcard__mark {
+  transform: scale(1.02);
+}
 
 .pcard__logo-img {
-  width: 148px;
-  height: 148px;
+  width: 132px;
+  height: 132px;
   object-fit: contain;
-  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.32));
 }
 
-.pcard--lg .pcard__logo-img { width: 220px; height: 220px; }
-.pcard--sm .pcard__logo-img { width: 88px; height: 88px; }
+.pcard--lg .pcard__logo-img { width: 168px; height: 168px; }
+.pcard--sm .pcard__logo-img { width: 84px; height: 84px; }
 
 .pcard__wordmark {
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--text), var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-tertiary);
 }
 
-.pcard--lg .pcard__wordmark { font-size: 44px; }
-.pcard--sm .pcard__wordmark { font-size: 26px; }
+.pcard--lg .pcard__wordmark { font-size: 38px; }
+.pcard--sm .pcard__wordmark { font-size: 22px; }
 
+/* Body */
 .pcard__body {
-  padding: 28px;
+  padding: 26px 28px 28px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  position: relative;
-  z-index: 1;
 }
 
-.pcard--lg .pcard__body { padding: 32px 36px; }
-.pcard--sm .pcard__body { padding: 22px; }
+.pcard--lg .pcard__body { padding: 30px 34px 34px; }
+.pcard--sm .pcard__body { padding: 20px 22px 22px; }
 
 .pcard__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .pcard__category {
@@ -119,91 +105,82 @@
   color: var(--text-tertiary);
 }
 
-.pcard__title {
-  font-size: 22px;
-  margin-bottom: 4px;
-  transition: transform 0.35s var(--ease);
-}
-
-.pcard:hover .pcard__title { transform: translateX(2px); }
-
-.pcard--lg .pcard__title { font-size: 27px; }
-.pcard--sm .pcard__title { font-size: 19px; }
-
 .pcard__private {
   color: var(--accent);
   border-color: var(--accent);
 }
 
-.pcard__tagline {
-  font-weight: 600;
-  color: var(--accent);
-  font-size: 14px;
-  margin: 0 0 14px;
+.pcard__title {
+  font-size: 21px;
+  margin-bottom: 8px;
+  line-height: 1.25;
 }
 
-.pcard__desc {
+.pcard--lg .pcard__title { font-size: 25px; }
+.pcard--sm .pcard__title { font-size: 18px; }
+
+.pcard__summary {
   color: var(--text-secondary);
-  font-size: 15px;
-  line-height: 1.65;
-  margin: 0 0 18px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 16px;
   flex-grow: 1;
-}
-
-.pcard--sm .pcard__desc {
-  font-size: 14px;
-  -webkit-line-clamp: 4;
   display: -webkit-box;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
+.pcard--lg .pcard__summary { font-size: 15.5px; }
+
 .pcard__tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.pcard__control {
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--text-tertiary);
-  margin: 0 0 18px;
-  font-weight: 600;
   letter-spacing: 0.01em;
+  margin: 0 0 20px;
 }
 
+/* Actions — minimal text links, App Store "Get" row feel */
 .pcard__actions {
   margin-top: auto;
   display: flex;
   align-items: center;
   gap: 20px;
-  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
 }
 
-.pcard__cta, .pcard__details {
+.pcard__action {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text);
-  transition: color 0.2s var(--ease);
   background: none;
   border: none;
   padding: 0;
   font-family: inherit;
+  transition: color 0.2s var(--ease);
 }
 
-.pcard__details {
+.pcard__action--ghost {
   color: var(--text-tertiary);
 }
 
-.pcard__cta:hover, .pcard__details:hover { color: var(--accent); }
-.pcard__cta:hover .btn__arrow, .pcard__details:hover .btn__arrow { transform: translateX(3px); }
+.pcard__action:hover { color: var(--accent); }
+.pcard__action:hover .btn__arrow { transform: translateX(3px); }
+
+.pcard__ext {
+  display: inline-block;
+  font-size: 13px;
+  transition: transform 0.25s var(--ease);
+}
+
+.pcard__action:hover .pcard__ext { transform: translate(2px, -2px); }
 
 .pcard__private-note {
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--text-tertiary);
   font-style: italic;
 }

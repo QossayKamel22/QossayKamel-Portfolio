@@ -1,19 +1,11 @@
 .featured__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 640px) {
   .featured__grid { grid-template-columns: 1fr; }
-}
-
-.featured__span2 {
-  grid-column: span 2;
-}
-
-@media (max-width: 800px) {
-  .featured__span2 { grid-column: span 1; }
 }
 
 .featured__more {
