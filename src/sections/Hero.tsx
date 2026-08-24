@@ -75,6 +75,9 @@ export function Hero() {
             <a href="#contact" className="btn btn-secondary focus-ring">
               Let's Connect
             </a>
+            <a href={profile.resumeUrl} download className="btn btn-secondary focus-ring">
+              Download CV
+            </a>
           </motion.div>
 
           <motion.div variants={item} className="hero__social">
