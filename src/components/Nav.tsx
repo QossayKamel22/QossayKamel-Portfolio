@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Theme } from "../hooks/useTheme";
+import { BrandMark } from "./BrandMark";
 import "./nav.css";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -29,7 +30,8 @@ export function Nav({ theme, onToggleTheme }: { theme: Theme; onToggleTheme: () 
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="container nav__inner">
         <a href="#top" className="nav__brand focus-ring">
-          Qossay Kamel
+          <BrandMark size={26} />
+          <span>Qossay Kamel</span>
         </a>
 
         <nav className="nav__links nav__links--desktop" aria-label="Primary">

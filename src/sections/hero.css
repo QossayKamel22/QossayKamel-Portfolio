@@ -145,15 +145,6 @@
 .hero__social a { transition: color 0.2s var(--ease); }
 .hero__social a:hover { color: var(--accent); }
 
-.hero__repo-link {
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  font-size: 12.5px;
-}
-
-.hero__repo-link:hover { border-color: var(--accent); }
-
 .hero__portrait-wrap {
   position: relative;
   display: flex;

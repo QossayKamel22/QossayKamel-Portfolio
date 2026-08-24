@@ -87,10 +87,7 @@ export function Hero() {
             <a href={profile.linkedin} target="_blank" rel="noreferrer" className="focus-ring">
               LinkedIn ↗
             </a>
-            <a
-              href={`mailto:${profile.email}`}
-              className="focus-ring hero__repo-link"
-            >
+            <a href={`mailto:${profile.email}`} className="focus-ring">
               Contact Me ↗
             </a>
           </motion.div>

@@ -26,9 +26,21 @@
 }
 
 .nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-weight: 700;
   font-size: 16px;
   letter-spacing: -0.01em;
+}
+
+.nav__brand .brand-mark {
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease);
+}
+
+.nav__brand:hover .brand-mark {
+  transform: scale(1.08) rotate(-4deg);
 }
 
 .nav__links {
