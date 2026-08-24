@@ -25,18 +25,34 @@
 }
 
 .banking__mark {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--accent);
-  background: var(--accent-soft);
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   margin-bottom: 18px;
+  padding: 10px;
+  flex-shrink: 0;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
+
+.banking__card:hover .banking__mark,
+.banking__arabi:hover .banking__mark {
+  transform: scale(1.05);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+.banking__mark-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.banking__mark--arabi { margin-bottom: 0; }
 
 .banking__name { font-size: 18px; margin-bottom: 8px; }
 
@@ -87,6 +103,12 @@
   gap: 24px;
   flex-wrap: wrap;
   background: linear-gradient(135deg, var(--accent-soft), transparent 60%);
+}
+
+.banking__arabi-lead {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .banking__disclaimer {

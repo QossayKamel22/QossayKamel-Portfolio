@@ -15,6 +15,40 @@
   gap: 24px;
 }
 
+.education__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.education__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.education__item:hover .education__avatar {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+}
+
+.education__avatar img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.education__item-body { min-width: 0; }
+
 .education__item h3 { font-size: 17px; margin-bottom: 4px; }
 
 .education__org {

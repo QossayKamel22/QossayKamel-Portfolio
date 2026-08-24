@@ -3,7 +3,7 @@ const images = import.meta.glob("../assets/projects/*.{jpg,png}", {
   import: "default",
 }) as Record<string, string>;
 
-const logos = import.meta.glob("../assets/logos/*.{svg,png}", {
+const logos = import.meta.glob("../assets/logos/*.{svg,png,jpg}", {
   eager: true,
   import: "default",
 }) as Record<string, string>;

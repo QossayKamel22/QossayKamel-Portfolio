@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="bhs-mark" x1="15" y1="10" x2="105" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5FBF8F"/>
+      <stop offset="1" stop-color="#1F8F5A"/>
+    </linearGradient>
+  </defs>
+  <path d="M60 8 L104 26 V58 C104 86 86 104 60 112 C34 104 16 86 16 58 V26 Z" fill="none" stroke="url(#bhs-mark)" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M60 44 V80 M60 44 C50 38 38 38 30 42 V72 C38 68 50 68 60 74 M60 44 C70 38 82 38 90 42 V72 C82 68 70 68 60 74" fill="none" stroke="url(#bhs-mark)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M60 16 L63.5 24.5 L72.5 25.2 L65.6 31 L67.8 39.8 L60 35 L52.2 39.8 L54.4 31 L47.5 25.2 L56.5 24.5 Z" fill="url(#bhs-mark)"/>
+</svg>

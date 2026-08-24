@@ -88,12 +88,10 @@ export function Hero() {
               LinkedIn ↗
             </a>
             <a
-              href="https://github.com/QossayKamel22/QossayKamel-Portfolio"
-              target="_blank"
-              rel="noreferrer"
+              href={`mailto:${profile.email}`}
               className="focus-ring hero__repo-link"
             >
-              GitHub Repository ↗
+              Contact Me ↗
             </a>
           </motion.div>
         </motion.div>

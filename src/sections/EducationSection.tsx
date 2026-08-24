@@ -1,4 +1,5 @@
 import { education, languages } from "../data/education";
+import { resolveProjectLogo } from "../data/projectImages";
 import "./education.css";
 
 export function EducationSection() {
@@ -11,11 +12,18 @@ export function EducationSection() {
           <div className="education__list">
             {education.map((e) => (
               <div key={e.title} className="education__item">
-                <h3>{e.title}</h3>
-                {e.org && <p className="education__org">{e.org}</p>}
-                <div className="education__meta">
-                  <span>{e.period}</span>
-                  {e.detail && <span>{e.detail}</span>}
+                {e.logo && (
+                  <span className="education__avatar">
+                    <img src={resolveProjectLogo(e.logo)} alt={`${e.org} logo`} />
+                  </span>
+                )}
+                <div className="education__item-body">
+                  <h3>{e.title}</h3>
+                  {e.org && <p className="education__org">{e.org}</p>}
+                  <div className="education__meta">
+                    <span>{e.period}</span>
+                    {e.detail && <span>{e.detail}</span>}
+                  </div>
                 </div>
               </div>
             ))}

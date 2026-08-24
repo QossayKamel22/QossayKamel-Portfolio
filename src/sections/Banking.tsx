@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { bankingApps, arabiMobile, bankingDisclaimer, confidentialityNote, noSourceNote } from "../data/banking";
+import { resolveProjectLogo } from "../data/projectImages";
 import "./banking.css";
 
 export function Banking() {
@@ -22,8 +23,8 @@ export function Banking() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.06 }}
             >
-              <div className="banking__mark" aria-hidden="true">
-                {bank.name.charAt(0)}
+              <div className="banking__mark">
+                <img src={resolveProjectLogo(bank.logo)} alt={`${bank.name} logo`} className="banking__mark-img" />
               </div>
               <h3 className="banking__name">{bank.name}</h3>
               <p className="banking__role">{bank.role}</p>
@@ -50,9 +51,14 @@ export function Banking() {
         </div>
 
         <div className="card banking__arabi">
-          <div>
-            <h3 className="banking__name">{arabiMobile.name}</h3>
-            <p className="banking__role">{arabiMobile.note}</p>
+          <div className="banking__arabi-lead">
+            <div className="banking__mark banking__mark--arabi">
+              <img src={resolveProjectLogo(arabiMobile.logo)} alt={`${arabiMobile.name} logo`} className="banking__mark-img" />
+            </div>
+            <div>
+              <h3 className="banking__name">{arabiMobile.name}</h3>
+              <p className="banking__role">{arabiMobile.note}</p>
+            </div>
           </div>
           <div className="banking__links">
             <a href={arabiMobile.appStore} target="_blank" rel="noreferrer" className="banking__store-link focus-ring">

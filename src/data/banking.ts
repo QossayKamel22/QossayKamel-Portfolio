@@ -5,6 +5,7 @@ export interface BankApp {
   platforms: string;
   playStore?: string;
   appStore?: string;
+  logo: string;
 }
 
 export const bankingApps: BankApp[] = [
@@ -14,6 +15,7 @@ export const bankingApps: BankApp[] = [
     platforms: "iOS · Android",
     playStore: "https://play.google.com/store/apps/details?id=com.pcnc.bop",
     appStore: "https://apps.apple.com/us/app/bank-of-palestine/id1038772801",
+    logo: "bank-of-palestine.jpg",
   },
   {
     name: "Cairo Amman Bank",
@@ -22,6 +24,7 @@ export const bankingApps: BankApp[] = [
     platforms: "iOS · Android",
     playStore: "https://play.google.com/store/apps/details?id=com.pcnc.mbs.cab",
     appStore: "https://apps.apple.com/us/app/cab-mobile-banking-ps/id1625831957",
+    logo: "cairo-amman-bank.jpg",
   },
   {
     name: "Arab Islamic Bank",
@@ -30,6 +33,7 @@ export const bankingApps: BankApp[] = [
     platforms: "iOS · Android",
     playStore: "https://play.google.com/store/apps/details?id=com.pcnc.aib",
     appStore: "https://apps.apple.com/us/app/arab-islamic-bank-mobile-app/id1439731494",
+    logo: "arab-islamic-bank.png",
   },
   {
     name: "Safa Bank",
@@ -37,6 +41,7 @@ export const bankingApps: BankApp[] = [
     platforms: "iOS · Android",
     playStore: "https://play.google.com/store/apps/details?id=com.safabank.safamobileapp",
     appStore: "https://apps.apple.com/us/app/safa-mobile/id1243247851",
+    logo: "safa-bank.png",
   },
   {
     name: "Egyptian Arab Land Bank",
@@ -46,6 +51,7 @@ export const bankingApps: BankApp[] = [
     playStore:
       "https://play.google.com/store/apps/details?id=com.pcnc.ealb.mobilebanking&hl=en",
     appStore: "https://apps.apple.com/il/app/ealb-ps/id6755387138",
+    logo: "egyptian-arab-land-bank.png",
   },
 ];
 
@@ -54,6 +60,7 @@ export const arabiMobile = {
   note: "Official Arab Bank mobile banking application — referenced here to show familiarity with the product and ecosystem through Qossay's Arab Bank role, not a claim of development ownership.",
   playStore: "https://play.google.com/store/apps/details?id=com.arabbank.arabimobilev2",
   appStore: "https://apps.apple.com/us/app/arabi-mobile/id1387380275",
+  logo: "arab-bank.png",
 };
 
 export const bankingDisclaimer =
