@@ -15,7 +15,12 @@ export interface Project {
   imageAlt?: string;
   logo?: string;
   hasVersionControl?: boolean;
+  /** Full-bleed, blurred ambient background shown behind the card content. */
+  bgImage?: string;
 }
+
+const WIKIMEDIA = "https://commons.wikimedia.org/wiki/Special:FilePath";
+const bg = (filename: string) => `${WIKIMEDIA}/${encodeURIComponent(filename)}?width=1600`;
 
 export const projects: Project[] = [
   // Priority — always visible
@@ -34,6 +39,7 @@ export const projects: Project[] = [
     imageAlt: "FLOW CRM sign-in, AI onboarding, dashboard, and leads screens",
     logo: "flow.png",
     hasVersionControl: true,
+    bgImage: bg("Forex_CRM_Software_Demo.png"),
   },
   {
     slug: "mizan",
@@ -50,6 +56,7 @@ export const projects: Project[] = [
     imageAlt: "MIZAN home, transactions, bills, and AI insights screens",
     logo: "mizan.png",
     hasVersionControl: true,
+    bgImage: bg("NYSE_Advanced_Trading_Floor.jpg"),
   },
   {
     slug: "nova",
@@ -66,6 +73,7 @@ export const projects: Project[] = [
     imageAlt: "NOVA landing, auth, and dashboard screens",
     logo: "nova.png",
     hasVersionControl: true,
+    bgImage: bg("Person_writing_in_notebook_while_using_laptop_at_a_modern_workspace.jpg"),
   },
   {
     slug: "pulse",
@@ -82,6 +90,7 @@ export const projects: Project[] = [
     imageAlt: "PULSE home, habit detail, insights, and profile screens",
     logo: "pulse.png",
     hasVersionControl: true,
+    bgImage: bg("Woman_doing_squat_workout_in_gym_with_barbell.jpg"),
   },
   {
     slug: "readspeed",
@@ -98,6 +107,7 @@ export const projects: Project[] = [
     imageAlt: "ReadSpeed onboarding, home, library, and speed reader screens",
     logo: "readspeed.png",
     hasVersionControl: true,
+    bgImage: bg("Individual reading a book at a cozy wooden table in a warm, inviting indoor setting.jpg"),
   },
   {
     slug: "makan",
@@ -113,6 +123,7 @@ export const projects: Project[] = [
     featured: true,
     logo: "makan.png",
     hasVersionControl: true,
+    bgImage: bg("Dubai_Marina_Skyline.jpg"),
   },
   {
     slug: "tamm",
@@ -129,6 +140,7 @@ export const projects: Project[] = [
     image: "tamm.jpg",
     imageAlt: "TAMM brand mark artwork",
     hasVersionControl: true,
+    bgImage: bg("Bitcoin_Network_Blue_4k.jpg"),
   },
   {
     slug: "pos-agent",
@@ -143,6 +155,7 @@ export const projects: Project[] = [
     status: "Private repository — details available on request.",
     featured: true,
     hasVersionControl: true,
+    bgImage: bg("Restaurant_Kitchen_expo_station.jpg"),
   },
   // More work
   {
@@ -157,6 +170,7 @@ export const projects: Project[] = [
     repo: "https://github.com/QossayKamel22/ironFit",
     logo: "ironfit-app.png",
     hasVersionControl: true,
+    bgImage: bg("Fit_young_man_doing_deadlift_exercise_in_gym.jpg"),
   },
   {
     slug: "nasaq",
@@ -172,6 +186,7 @@ export const projects: Project[] = [
     imageAlt: "NASAQ onboarding, login, home, and product screens",
     logo: "nasaq.png",
     hasVersionControl: true,
+    bgImage: bg("Clothing_store_interior_LCCN2016824584.jpg"),
   },
   {
     slug: "ishop",
@@ -182,6 +197,7 @@ export const projects: Project[] = [
     description:
       "A Flutter marketplace concept for selling, trading, and bartering items, with cash-on-delivery and seller/admin dashboards.",
     tech: ["Flutter"],
+    bgImage: bg("Cardboard_boxes_and_their_usage_besides_shipping.jpg"),
   },
   {
     slug: "icar",
@@ -192,6 +208,7 @@ export const projects: Project[] = [
     description:
       "A product design project connecting car owners with service providers — scheduling, notifications, pricing, and a loyalty program. This is a UI/UX design concept built in Figma; it has not yet been engineered into a codebase, so no technical stack is claimed for it.",
     tech: ["Figma", "UI/UX", "Wireframing", "Prototyping"],
+    bgImage: bg("Car_repair_garage_in_Brastad.jpg"),
   },
   {
     slug: "academic-freelance",
@@ -202,5 +219,6 @@ export const projects: Project[] = [
     description:
       "An online training/education app in Flutter (UI, backend/API integration, auth), a university library booking system built with React and Express.js, and an online clothing store built with Spring and React as third-year coursework at Bethlehem University.",
     tech: ["Flutter", "React", "Express.js", "Spring"],
+    bgImage: bg("ComputerProgrammer.jpg"),
   },
 ];

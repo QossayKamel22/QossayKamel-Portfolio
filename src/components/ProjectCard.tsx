@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import type { Project } from "../data/projects";
-import { resolveProjectImage, resolveProjectLogo } from "../data/projectImages";
+import { resolveProjectLogo } from "../data/projectImages";
 import "./project-card.css";
 
 export function ProjectCard({
@@ -12,9 +13,10 @@ export function ProjectCard({
   size?: "lg" | "md" | "sm";
   onOpen?: (p: Project) => void;
 }) {
-  const image = resolveProjectImage(project.image);
   const logo = resolveProjectLogo(project.logo);
   const visibleTech = project.tech.slice(0, 4);
+  const [bgFailed, setBgFailed] = useState(false);
+  const showBg = !!project.bgImage && !bgFailed;
 
   return (
     <motion.article
@@ -24,53 +26,60 @@ export function ProjectCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
     >
-      <button
-        type="button"
-        className="pcard__media"
-        onClick={() => onOpen?.(project)}
-        aria-label={`View ${project.name} details`}
-      >
-        {image ? (
-          <img src={image} alt={project.imageAlt ?? `${project.name} preview`} className="pcard__photo" loading="lazy" />
-        ) : (
-          <span className="pcard__mark">
+      <div className="pcard__stage" aria-hidden="true">
+        {showBg && (
+          <img
+            src={project.bgImage}
+            alt=""
+            className="pcard__bg"
+            loading="lazy"
+            onError={() => setBgFailed(true)}
+          />
+        )}
+        <span className="pcard__overlay" />
+      </div>
+
+      <div className="pcard__content">
+        <div className="pcard__top">
+          <span className="pcard__logo-chip">
             {logo ? (
               <img src={logo} alt={`${project.name} logo`} className="pcard__logo-img" />
             ) : (
-              <span className="pcard__wordmark">{project.name}</span>
+              <span className="pcard__wordmark">{project.name.slice(0, 2)}</span>
             )}
           </span>
-        )}
-      </button>
-
-      <div className="pcard__body">
-        <div className="pcard__top">
-          <span className="pcard__category">{project.category}</span>
-          {project.isPrivate && <span className="tag pcard__private">Private</span>}
+          {project.isPrivate && <span className="pcard__badge pcard__badge--private">Private</span>}
         </div>
 
-        <h3 className="pcard__title">{project.name}</h3>
-        <p className="pcard__summary">{project.summary}</p>
+        <div className="pcard__info">
+          <span className="pcard__category">{project.category}</span>
+          <h3 className="pcard__title">{project.name}</h3>
+          <p className="pcard__summary">{project.summary}</p>
 
-        {visibleTech.length > 0 && (
-          <p className="pcard__tech">{visibleTech.join(" · ")}</p>
-        )}
-
-        <div className="pcard__actions">
-          <button type="button" className="pcard__action focus-ring" onClick={() => onOpen?.(project)}>
-            View Project <span className="btn__arrow">→</span>
-          </button>
-          {project.repo && (
-            <a
-              href={project.repo}
-              target="_blank"
-              rel="noreferrer"
-              className="pcard__action pcard__action--ghost focus-ring"
-            >
-              GitHub <span className="pcard__ext">↗</span>
-            </a>
+          {visibleTech.length > 0 && (
+            <div className="pcard__tech">
+              {visibleTech.map((t) => (
+                <span key={t} className="pcard__badge">{t}</span>
+              ))}
+            </div>
           )}
-          {project.isPrivate && <span className="pcard__private-note">{project.status}</span>}
+
+          <div className="pcard__actions">
+            <button type="button" className="pcard__action pcard__action--primary focus-ring" onClick={() => onOpen?.(project)}>
+              View Project <span className="btn__arrow">→</span>
+            </button>
+            {project.repo && (
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="pcard__action pcard__action--ghost focus-ring"
+              >
+                GitHub <span className="pcard__ext">↗</span>
+              </a>
+            )}
+            {project.isPrivate && <span className="pcard__private-note">{project.status}</span>}
+          </div>
         </div>
       </div>
     </motion.article>

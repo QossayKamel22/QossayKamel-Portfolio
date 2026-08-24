@@ -1,130 +1,145 @@
 .pcard {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
+  position: relative;
+  isolation: isolate;
   border-radius: var(--radius);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: var(--shadow);
+  min-height: 360px;
+  background: #0c0b10;
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
 }
 
+.pcard--lg { min-height: 440px; }
+.pcard--sm { min-height: 300px; }
+
 .pcard:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--shadow-lift);
-  border-color: color-mix(in srgb, var(--accent) 22%, var(--border));
+  border-color: rgba(255, 255, 255, 0.18);
 }
 
-/* Media — large, image-first, App Store style tile */
-.pcard__media {
-  position: relative;
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  border: none;
-  border-bottom: 1px solid var(--border);
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
+/* Ambient background stage — full-bleed, heavily blurred, dark-overlaid */
+.pcard__stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
-  background: var(--bg-subtle);
 }
 
-.pcard__photo {
-  width: 100%;
-  height: 100%;
+.pcard__bg {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
   object-fit: cover;
   object-position: center;
-  display: block;
-  transition: transform 0.5s var(--ease);
+  filter: blur(22px) saturate(1.1);
+  opacity: 0.5;
+  transform: scale(1.06);
+  transition: transform 0.7s var(--ease), opacity 0.5s var(--ease);
 }
 
-.pcard:hover .pcard__photo {
-  transform: scale(1.035);
+.pcard:hover .pcard__bg {
+  transform: scale(1.14);
+  opacity: 0.6;
 }
 
-/* Fallback tile for projects without a product screenshot — a clean, centered mark */
-.pcard__mark {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(155deg, var(--bg-subtle), var(--bg-elevated) 70%);
-  transition: transform 0.5s var(--ease);
+.pcard__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6, 6, 9, 0.55) 0%, rgba(6, 6, 9, 0.72) 45%, rgba(6, 6, 9, 0.94) 100%),
+    radial-gradient(120% 90% at 0% 0%, rgba(6, 6, 9, 0.25), transparent 60%);
 }
 
-.pcard:hover .pcard__mark {
-  transform: scale(1.02);
-}
-
-.pcard__logo-img {
-  width: 132px;
-  height: 132px;
-  object-fit: contain;
-}
-
-.pcard--lg .pcard__logo-img { width: 168px; height: 168px; }
-.pcard--sm .pcard__logo-img { width: 84px; height: 84px; }
-
-.pcard__wordmark {
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text-tertiary);
-}
-
-.pcard--lg .pcard__wordmark { font-size: 38px; }
-.pcard--sm .pcard__wordmark { font-size: 22px; }
-
-/* Body */
-.pcard__body {
-  padding: 26px 28px 28px;
+/* Content layer — glass panel sitting above the ambient image */
+.pcard__content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding: 26px 28px 28px;
 }
 
-.pcard--lg .pcard__body { padding: 30px 34px 34px; }
-.pcard--sm .pcard__body { padding: 20px 22px 22px; }
+.pcard--lg .pcard__content { padding: 32px 36px 36px; }
+.pcard--sm .pcard__content { padding: 20px 22px 22px; }
 
 .pcard__top {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: 12px;
+}
+
+/* Logo — sharp, elevated in a small glass chip */
+.pcard__logo-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 19px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.pcard--lg .pcard__logo-chip { width: 92px; height: 92px; border-radius: 22px; }
+.pcard--sm .pcard__logo-chip { width: 60px; height: 60px; border-radius: 15px; }
+
+.pcard__logo-img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.pcard__wordmark {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.pcard--sm .pcard__wordmark { font-size: 15px; }
+
+.pcard__info {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .pcard__category {
   font-size: 11.5px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: var(--text-tertiary);
-}
-
-.pcard__private {
-  color: var(--accent);
-  border-color: var(--accent);
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 8px;
 }
 
 .pcard__title {
-  font-size: 21px;
-  margin-bottom: 8px;
+  font-size: 22px;
+  color: #fff;
   line-height: 1.25;
+  margin-bottom: 8px;
 }
 
-.pcard--lg .pcard__title { font-size: 25px; }
+.pcard--lg .pcard__title { font-size: 26px; }
 .pcard--sm .pcard__title { font-size: 18px; }
 
 .pcard__summary {
-  color: var(--text-secondary);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 14.5px;
   line-height: 1.6;
   margin: 0 0 16px;
-  flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -134,20 +149,40 @@
 .pcard--lg .pcard__summary { font-size: 15.5px; }
 
 .pcard__tech {
-  font-size: 12.5px;
-  color: var(--text-tertiary);
-  letter-spacing: 0.01em;
-  margin: 0 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-/* Actions — minimal text links, App Store "Get" row feel */
+/* Badges — glassy chips that read on any photo */
+.pcard__badge {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.pcard__badge--private {
+  color: var(--accent-2);
+  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 18%, rgba(255, 255, 255, 0.06));
+}
+
+/* Actions */
 .pcard__actions {
-  margin-top: auto;
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 8px 18px;
   padding-top: 16px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .pcard__action {
@@ -156,19 +191,19 @@
   gap: 6px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text);
+  font-family: inherit;
+  color: #fff;
   background: none;
   border: none;
   padding: 0;
-  font-family: inherit;
-  transition: color 0.2s var(--ease);
+  transition: color 0.2s var(--ease), opacity 0.2s var(--ease);
 }
 
 .pcard__action--ghost {
-  color: var(--text-tertiary);
+  color: rgba(255, 255, 255, 0.68);
 }
 
-.pcard__action:hover { color: var(--accent); }
+.pcard__action:hover { color: var(--accent-2); }
 .pcard__action:hover .btn__arrow { transform: translateX(3px); }
 
 .pcard__ext {
@@ -181,6 +216,6 @@
 
 .pcard__private-note {
   font-size: 12.5px;
-  color: var(--text-tertiary);
+  color: rgba(255, 255, 255, 0.55);
   font-style: italic;
 }
