@@ -19,6 +19,8 @@ export interface Project {
   bgImage?: string;
   /** Additional product screenshots shown in the Project Details gallery. */
   gallery?: { src: string; alt: string }[];
+  /** Render the card's logo chip larger and more prominent than the standard size. */
+  logoLarge?: boolean;
 }
 
 const WIKIMEDIA = "https://commons.wikimedia.org/wiki/Special:FilePath";
@@ -143,6 +145,8 @@ export const projects: Project[] = [
     featured: true,
     image: "tamm-web.jpg",
     imageAlt: "TAMM web landing page and service booking, checkout, and payment screens",
+    logo: "tamm.png",
+    logoLarge: true,
     hasVersionControl: true,
     bgImage: bg("Bitcoin_Network_Blue_4k.jpg"),
     gallery: [

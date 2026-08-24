@@ -41,7 +41,7 @@ export function ProjectCard({
 
       <div className="pcard__content">
         <div className="pcard__top">
-          <span className="pcard__logo-chip">
+          <span className={`pcard__logo-chip${project.logoLarge ? " pcard__logo-chip--xl" : ""}`}>
             {logo ? (
               <img src={logo} alt={`${project.name} logo`} className="pcard__logo-img" />
             ) : (
