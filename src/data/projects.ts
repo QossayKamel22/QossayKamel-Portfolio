@@ -19,8 +19,6 @@ export interface Project {
   bgImage?: string;
   /** Additional product screenshots shown in the Project Details gallery. */
   gallery?: { src: string; alt: string }[];
-  /** Render the card's logo chip larger and more prominent than the standard size. */
-  logoLarge?: boolean;
 }
 
 const WIKIMEDIA = "https://commons.wikimedia.org/wiki/Special:FilePath";
@@ -146,7 +144,6 @@ export const projects: Project[] = [
     image: "tamm-web.jpg",
     imageAlt: "TAMM web landing page and service booking, checkout, and payment screens",
     logo: "tamm.png",
-    logoLarge: true,
     hasVersionControl: true,
     bgImage: bg("Bitcoin_Network_Blue_4k.jpg"),
     gallery: [
@@ -168,6 +165,7 @@ export const projects: Project[] = [
     isPrivate: true,
     status: "Private repository — details available on request.",
     featured: true,
+    logo: "pos-agent.svg",
     hasVersionControl: true,
     bgImage: bg("Restaurant_Kitchen_expo_station.jpg"),
   },
@@ -222,6 +220,7 @@ export const projects: Project[] = [
     description:
       "A product design project connecting car owners with service providers — scheduling, notifications, pricing, and a loyalty program. This is a UI/UX design concept built in Figma; it has not yet been engineered into a codebase, so no technical stack is claimed for it.",
     tech: ["Figma", "UI/UX", "Wireframing", "Prototyping"],
+    logo: "icar.svg",
     bgImage: bg("Car_repair_garage_in_Brastad.jpg"),
   },
   {
@@ -233,6 +232,7 @@ export const projects: Project[] = [
     description:
       "An online training/education app in Flutter (UI, backend/API integration, auth), a university library booking system built with React and Express.js, and an online clothing store built with Spring and React as third-year coursework at Bethlehem University.",
     tech: ["Flutter", "React", "Express.js", "Spring"],
+    logo: "bethlehem-university.svg",
     bgImage: bg("ComputerProgrammer.jpg"),
   },
 ];

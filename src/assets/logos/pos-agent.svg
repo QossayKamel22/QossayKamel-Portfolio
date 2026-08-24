@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 190">
+  <defs>
+    <linearGradient id="pos-mark" x1="30" y1="20" x2="170" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFC978"/>
+      <stop offset="1" stop-color="#E0872A"/>
+    </linearGradient>
+  </defs>
+  <rect x="42" y="34" width="116" height="80" rx="16" fill="none" stroke="url(#pos-mark)" stroke-width="8"/>
+  <path d="M58 78 L76 78 L84 60 L96 96 L106 78 L142 78" fill="none" stroke="url(#pos-mark)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="86" y="122" width="28" height="10" rx="4" fill="url(#pos-mark)"/>
+  <rect x="70" y="134" width="60" height="9" rx="4.5" fill="url(#pos-mark)"/>
+  <text x="100" y="176" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="30" letter-spacing="6" fill="url(#pos-mark)">POS</text>
+</svg>
