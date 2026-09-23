@@ -33,16 +33,19 @@
 
 .contact__links a:hover { color: var(--accent); }
 
-.contact__form {
+.contact__form-wrap {
   padding: 28px;
+}
+
+.contact__form-wrap:hover {
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
+.contact__form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-.contact__form:hover {
-  transform: none;
-  box-shadow: var(--shadow);
 }
 
 .contact__form label {
@@ -72,8 +75,37 @@
   outline-offset: 1px;
 }
 
-.contact__hint {
-  font-size: 12px;
-  color: var(--text-tertiary);
+.contact__sent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 4px;
+  min-height: 320px;
+  justify-content: center;
+}
+
+.contact__sent-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.contact__sent-title {
+  font-size: 20px;
   margin: 0;
+}
+
+.contact__sent-copy {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  line-height: 1.6;
+  margin: 0 0 6px;
 }

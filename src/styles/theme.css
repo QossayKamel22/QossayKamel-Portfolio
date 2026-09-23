@@ -76,11 +76,13 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
+  /* clip, not hidden — hidden turns this into a scroll container and
+     silently breaks position: sticky on the nav */
+  overflow-x: clip;
 }
 
 #root {
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -184,17 +186,36 @@ h1, h2, h3, h4 { margin: 0; font-weight: 700; letter-spacing: -0.02em; }
 }
 
 .card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(160deg, var(--glass-highlight), transparent 45%);
+  opacity: 0.4;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lift);
-  border-color: color-mix(in srgb, var(--accent) 30%, var(--border));
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--glass-border));
 }
 
 /* Liquid-glass panel — frosted surface with a soft specular top edge,

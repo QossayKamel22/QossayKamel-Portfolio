@@ -6,6 +6,17 @@
   transition: border-color 0.25s ease, background-color 0.25s ease, backdrop-filter 0.25s ease;
 }
 
+.nav__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
 .nav--scrolled {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import type { Theme } from "../hooks/useTheme";
 import { BrandMark } from "./BrandMark";
 import "./nav.css";
@@ -18,6 +18,8 @@ const LINKS = [
 export function Nav({ theme, onToggleTheme }: { theme: Theme; onToggleTheme: () => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -28,6 +30,7 @@ export function Nav({ theme, onToggleTheme }: { theme: Theme; onToggleTheme: () 
 
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
+      <motion.div className="nav__progress" style={{ scaleX: progress }} aria-hidden="true" />
       <div className="container nav__inner">
         <a href="#top" className="nav__brand focus-ring">
           <BrandMark size={26} />
