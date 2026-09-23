@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 190">
+  <defs>
+    <linearGradient id="mls-mark" x1="30" y1="150" x2="170" y2="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9C7020"/>
+      <stop offset="1" stop-color="#E9C971"/>
+    </linearGradient>
+  </defs>
+  <rect x="40" y="96" width="24" height="46" rx="5" fill="none" stroke="url(#mls-mark)" stroke-width="7"/>
+  <rect x="88" y="70" width="24" height="72" rx="5" fill="none" stroke="url(#mls-mark)" stroke-width="7"/>
+  <rect x="136" y="40" width="24" height="102" rx="5" fill="none" stroke="url(#mls-mark)" stroke-width="7"/>
+  <path d="M40 88 L88 58 L136 30" fill="none" stroke="url(#mls-mark)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="148" cy="24" r="10" fill="url(#mls-mark)"/>
+  <text x="100" y="176" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28" letter-spacing="4" fill="url(#mls-mark)">LIFE</text>
+</svg>

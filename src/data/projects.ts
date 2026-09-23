@@ -267,6 +267,7 @@ export const projects: Project[] = [
       "A web-based life simulation game — build a character, get a job and build a career, manage income and expenses, buy and customize cars and property, generate rental income, and grow a virtual life across modern cities. Built with Next.js and Firebase; in active development.",
     tech: ["Next.js", "TypeScript", "Firebase"],
     repo: "https://github.com/QossayKamel22/Modern-Life-Simulator",
+    logo: "modern-life-simulator.svg",
     hasVersionControl: true,
     bgImage: bg("New York City night skyline by 500px 1.jpg"),
   },
@@ -282,6 +283,7 @@ export const projects: Project[] = [
     repo: "https://github.com/QossayKamel22/Draggable-Widget-Dashboard",
     image: "draggable-widget-dashboard.jpg",
     imageAlt: "Widget Dashboard sidebar with reorderable Clock and Note widgets",
+    logo: "widget-dashboard.svg",
     hasVersionControl: true,
   },
   {
