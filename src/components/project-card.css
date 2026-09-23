@@ -165,26 +165,6 @@
   transform: scale(1.04);
 }
 
-.pcard__media--context .pcard__media-img {
-  filter: saturate(0.85) brightness(0.88);
-}
-
-.pcard__media--context::after {
-  content: "Context photo";
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  font-size: 10.5px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: rgba(255, 255, 255, 0.88);
-  background: rgba(10, 12, 24, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(8px);
-  padding: 3px 9px;
-  border-radius: 999px;
-}
-
 .pcard__media--placeholder {
   display: flex;
   align-items: center;

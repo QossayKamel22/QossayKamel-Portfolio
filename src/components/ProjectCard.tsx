@@ -15,7 +15,6 @@ export function ProjectCard({
 }) {
   const logo = resolveProjectLogo(project.logo);
   const shot = resolveProjectImage(project.image) || project.bgImage;
-  const isRealShot = !!resolveProjectImage(project.image);
   const visibleTech = project.tech.slice(0, 3);
   const [shotFailed, setShotFailed] = useState(false);
 
@@ -54,10 +53,10 @@ export function ProjectCard({
       </div>
 
       {shot && !shotFailed && (
-        <div className={`pcard__media${isRealShot ? "" : " pcard__media--context"}`}>
+        <div className="pcard__media">
           <img
             src={shot}
-            alt={isRealShot ? project.imageAlt || `${project.name} screenshot` : ""}
+            alt={project.imageAlt || `${project.name} screenshot`}
             loading="lazy"
             className="pcard__media-img"
             onError={() => setShotFailed(true)}
