@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import type { Project } from "../data/projects";
-import { resolveProjectLogo } from "../data/projectImages";
+import { resolveProjectImage, resolveProjectLogo } from "../data/projectImages";
 import "./project-card.css";
 
 export function ProjectCard({
@@ -14,9 +14,10 @@ export function ProjectCard({
   onOpen?: (p: Project) => void;
 }) {
   const logo = resolveProjectLogo(project.logo);
-  const visibleTech = project.tech.slice(0, 4);
-  const [bgFailed, setBgFailed] = useState(false);
-  const showBg = !!project.bgImage && !bgFailed;
+  const shot = resolveProjectImage(project.image) || project.bgImage;
+  const isRealShot = !!resolveProjectImage(project.image);
+  const visibleTech = project.tech.slice(0, 3);
+  const [shotFailed, setShotFailed] = useState(false);
 
   return (
     <motion.article
@@ -24,62 +25,83 @@ export function ProjectCard({
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
+      whileHover={{ y: -6 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
     >
-      <div className="pcard__stage" aria-hidden="true">
-        {showBg && (
-          <img
-            src={project.bgImage}
-            alt=""
-            className="pcard__bg"
-            loading="lazy"
-            onError={() => setBgFailed(true)}
-          />
-        )}
-        <span className="pcard__overlay" />
-      </div>
+      <span className="pcard__sheen" aria-hidden="true" />
 
-      <div className="pcard__content">
-        <div className="pcard__top">
-          <span className="pcard__logo-chip">
-            {logo ? (
-              <img src={logo} alt={`${project.name} logo`} className="pcard__logo-img" />
-            ) : (
-              <span className="pcard__wordmark">{project.name.slice(0, 2)}</span>
-            )}
-          </span>
-          {project.isPrivate && <span className="pcard__badge pcard__badge--private">Private</span>}
+      <div className="pcard__header">
+        <span className="pcard__icon">
+          {logo ? (
+            <img src={logo} alt="" className="pcard__icon-img" />
+          ) : (
+            <span className="pcard__wordmark">{project.name.slice(0, 2)}</span>
+          )}
+        </span>
+
+        <div className="pcard__heading">
+          <h3 className="pcard__title">{project.name}</h3>
+          <span className="pcard__category">{project.category}</span>
         </div>
 
-        <div className="pcard__info">
-          <span className="pcard__category">{project.category}</span>
-          <h3 className="pcard__title">{project.name}</h3>
-          <p className="pcard__summary">{project.summary}</p>
+        <button
+          type="button"
+          className="pcard__get focus-ring"
+          onClick={() => onOpen?.(project)}
+        >
+          View
+        </button>
+      </div>
 
-          {visibleTech.length > 0 && (
-            <div className="pcard__tech">
-              {visibleTech.map((t) => (
-                <span key={t} className="pcard__badge">{t}</span>
-              ))}
-            </div>
-          )}
+      {shot && !shotFailed && (
+        <div className={`pcard__media${isRealShot ? "" : " pcard__media--context"}`}>
+          <img
+            src={shot}
+            alt={isRealShot ? project.imageAlt || `${project.name} screenshot` : ""}
+            loading="lazy"
+            className="pcard__media-img"
+            onError={() => setShotFailed(true)}
+          />
+        </div>
+      )}
 
-          <div className="pcard__actions">
-            <button type="button" className="pcard__action pcard__action--primary focus-ring" onClick={() => onOpen?.(project)}>
-              View Project <span className="btn__arrow">→</span>
-            </button>
-            {project.repo && (
-              <a
-                href={project.repo}
-                target="_blank"
-                rel="noreferrer"
-                className="pcard__action pcard__action--ghost focus-ring"
-              >
-                GitHub <span className="pcard__ext">↗</span>
-              </a>
-            )}
-            {project.isPrivate && <span className="pcard__private-note">{project.status}</span>}
+      {(!shot || shotFailed) && (
+        <div className="pcard__media pcard__media--placeholder" aria-hidden="true">
+          <span className="pcard__media-mark">
+            {logo ? <img src={logo} alt="" /> : project.name.slice(0, 2)}
+          </span>
+        </div>
+      )}
+
+      <p className="pcard__summary">{project.summary}</p>
+
+      <div className="pcard__footer">
+        {visibleTech.length > 0 && (
+          <div className="pcard__tech">
+            {visibleTech.map((t) => (
+              <span key={t} className="pcard__badge">{t}</span>
+            ))}
+            {project.isPrivate && <span className="pcard__badge pcard__badge--private">Private</span>}
           </div>
+        )}
+
+        <div className="pcard__actions">
+          <button type="button" className="pcard__action focus-ring" onClick={() => onOpen?.(project)}>
+            Details <span className="btn__arrow">→</span>
+          </button>
+          {project.repo && (
+            <a
+              href={project.repo}
+              target="_blank"
+              rel="noreferrer"
+              className="pcard__action pcard__action--ghost focus-ring"
+            >
+              GitHub <span className="pcard__ext">↗</span>
+            </a>
+          )}
+          {project.isPrivate && !project.repo && (
+            <span className="pcard__private-note">{project.status}</span>
+          )}
         </div>
       </div>
     </motion.article>

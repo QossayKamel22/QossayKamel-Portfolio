@@ -1,238 +1,308 @@
 .pcard {
   position: relative;
   isolation: isolate;
-  border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 360px;
-  background: #0c0b10;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+  gap: 16px;
+  padding: 20px 20px 22px;
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
 }
 
-.pcard--lg { min-height: 440px; }
-.pcard--sm { min-height: 330px; }
+.pcard--lg { padding: 24px 24px 26px; gap: 18px; }
+.pcard--sm { padding: 16px 16px 18px; gap: 12px; }
 
 .pcard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lift);
-  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: var(--glass-shadow), 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--glass-border));
 }
 
-/* Ambient background stage — full-bleed, heavily blurred, dark-overlaid */
-.pcard__stage {
+/* Specular top edge, like other glass panels */
+.pcard::before {
+  content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
-  overflow: hidden;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(160deg, var(--glass-highlight), transparent 42%);
+  opacity: 0.55;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
 }
 
-.pcard__bg {
+.pcard__sheen {
   position: absolute;
-  inset: -8%;
-  width: 116%;
-  height: 116%;
-  object-fit: cover;
-  object-position: center;
-  filter: blur(22px) saturate(1.1);
-  opacity: 0.5;
-  transform: scale(1.06);
-  transition: transform 0.7s var(--ease), opacity 0.5s var(--ease);
+  inset: -40% -10%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 42%, color-mix(in srgb, var(--glass-highlight) 65%, transparent) 50%, transparent 58%);
+  opacity: 0;
+  transform: translateX(-120%) rotate(8deg);
 }
 
-.pcard:hover .pcard__bg {
-  transform: scale(1.14);
-  opacity: 0.6;
+.pcard:hover .pcard__sheen {
+  animation: glass-sheen 1s var(--ease) 1;
 }
 
-.pcard__overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(6, 6, 9, 0.55) 0%, rgba(6, 6, 9, 0.72) 45%, rgba(6, 6, 9, 0.94) 100%),
-    radial-gradient(120% 90% at 0% 0%, rgba(6, 6, 9, 0.25), transparent 60%);
-}
-
-/* Content layer — glass panel sitting above the ambient image */
-.pcard__content {
+/* Header — app icon, name/category, and an App-Store-style "GET" pill */
+.pcard__header {
   position: relative;
   z-index: 1;
   display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 26px 28px 28px;
-  gap: 20px;
+  align-items: center;
+  gap: 14px;
 }
 
-.pcard--lg .pcard__content { padding: 32px 36px 36px; gap: 24px; }
-.pcard--sm .pcard__content { padding: 20px 22px 22px; gap: 16px; }
-
-.pcard__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-/*
- * Logo — one standardized container system for every project/company mark.
- * Fixed square dimensions + object-fit: contain keep every logo — square,
- * wide, or narrow — reading at the same visual size and weight.
- */
-.pcard__logo-chip {
+.pcard__icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 128px;
-  height: 128px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.13);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(18px) saturate(1.3);
-  -webkit-backdrop-filter: blur(18px) saturate(1.3);
-  box-shadow:
-    0 16px 40px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 0 30px rgba(139, 124, 246, 0.16);
+  width: 56px;
+  height: 56px;
+  border-radius: 15px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 16px rgba(18, 22, 42, 0.12);
   flex-shrink: 0;
-  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  overflow: hidden;
 }
 
-.pcard--lg .pcard__logo-chip { width: 140px; height: 140px; border-radius: 32px; }
-.pcard--sm .pcard__logo-chip { width: 92px; height: 92px; border-radius: 22px; }
+.pcard--lg .pcard__icon { width: 64px; height: 64px; border-radius: 17px; }
+.pcard--sm .pcard__icon { width: 46px; height: 46px; border-radius: 13px; }
 
-.pcard:hover .pcard__logo-chip {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow:
-    0 18px 44px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.07),
-    0 0 40px rgba(139, 124, 246, 0.24);
-}
-
-.pcard__logo-img {
-  width: 82%;
-  height: 82%;
+.pcard__icon-img {
+  width: 74%;
+  height: 74%;
   object-fit: contain;
 }
 
 .pcard__wordmark {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--text);
 }
 
-.pcard--sm .pcard__wordmark { font-size: 15px; }
-
-.pcard__info {
-  margin-top: auto;
+.pcard__heading {
   display: flex;
   flex-direction: column;
-}
-
-.pcard__category {
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.62);
-  margin-bottom: 8px;
+  gap: 3px;
+  min-width: 0;
 }
 
 .pcard__title {
-  font-size: 22px;
-  color: #fff;
-  line-height: 1.25;
-  margin-bottom: 8px;
+  font-size: 17px;
+  color: var(--text);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.pcard--lg .pcard__title { font-size: 26px; }
-.pcard--sm .pcard__title { font-size: 18px; }
+.pcard--lg .pcard__title { font-size: 19px; }
+.pcard--sm .pcard__title { font-size: 15.5px; }
 
+.pcard__category {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pcard__get {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 999px;
+  padding: 7px 16px;
+  transition: transform 0.25s var(--ease-snap), background-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.pcard__get:hover {
+  background: var(--accent);
+  color: #0B0D1A;
+  transform: translateY(-1px) scale(1.04);
+}
+
+/* Media — the actual product screenshot, framed like an App Store card */
+.pcard__media {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-subtle);
+  border: 1px solid var(--glass-border);
+}
+
+.pcard__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s var(--ease);
+}
+
+.pcard:hover .pcard__media-img {
+  transform: scale(1.04);
+}
+
+.pcard__media--context .pcard__media-img {
+  filter: saturate(0.85) brightness(0.88);
+}
+
+.pcard__media--context::after {
+  content: "Context photo";
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(10, 12, 24, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.pcard__media--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(120% 140% at 20% 0%, var(--accent-soft), transparent 60%),
+    linear-gradient(155deg, var(--bg-subtle), var(--bg-elevated));
+}
+
+.pcard__media-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  aspect-ratio: 1;
+  border-radius: 26%;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.pcard__media-mark img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+/* Body */
 .pcard__summary {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 14.5px;
-  line-height: 1.6;
-  margin: 0 0 16px;
+  position: relative;
+  z-index: 1;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.pcard--lg .pcard__summary { font-size: 15.5px; }
+.pcard--lg .pcard__summary { font-size: 15px; -webkit-line-clamp: 3; }
+
+.pcard__footer {
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--glass-border);
+}
 
 .pcard__tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 7px;
 }
 
-/* Badges — glassy chips that read on any photo */
 .pcard__badge {
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  padding: 5px 11px;
+  padding: 4px 10px;
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
 }
 
 .pcard__badge--private {
   color: var(--accent-2);
-  border-color: color-mix(in srgb, var(--accent-2) 55%, transparent);
-  background: color-mix(in srgb, var(--accent-2) 18%, rgba(255, 255, 255, 0.06));
+  border-color: color-mix(in srgb, var(--accent-2) 50%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
 }
 
-/* Actions */
 .pcard__actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px 18px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .pcard__action {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   font-family: inherit;
-  color: #fff;
+  color: var(--text);
   background: none;
   border: none;
   padding: 0;
-  transition: color 0.2s var(--ease), opacity 0.2s var(--ease);
+  transition: color 0.2s var(--ease);
 }
 
 .pcard__action--ghost {
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--text-secondary);
 }
 
-.pcard__action:hover { color: var(--accent-2); }
+.pcard__action:hover { color: var(--accent); }
 .pcard__action:hover .btn__arrow { transform: translateX(3px); }
 
 .pcard__ext {
   display: inline-block;
-  font-size: 13px;
+  font-size: 12px;
   transition: transform 0.25s var(--ease);
 }
 
 .pcard__action:hover .pcard__ext { transform: translate(2px, -2px); }
 
 .pcard__private-note {
-  font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.55);
+  font-size: 12px;
+  color: var(--text-tertiary);
   font-style: italic;
 }

@@ -32,6 +32,10 @@ export function Hero() {
 
   return (
     <section id="top" className="hero" ref={heroRef} onMouseMove={handleMouseMove}>
+      <div className="hero__mesh" aria-hidden="true" />
+      <span className="hero__orb hero__orb--1" aria-hidden="true" />
+      <span className="hero__orb hero__orb--2" aria-hidden="true" />
+      <span className="hero__orb hero__orb--3" aria-hidden="true" />
       <div className="hero__cursor-light" aria-hidden="true" />
       <motion.div
         className="hero__bg"

@@ -23,6 +23,7 @@ function App() {
       <div className="ambient-bg" aria-hidden="true">
         <span />
         <span />
+        <span />
       </div>
       <Nav theme={theme} onToggleTheme={toggle} />
       <main>
